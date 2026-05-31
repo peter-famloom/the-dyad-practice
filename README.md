@@ -39,16 +39,19 @@ Mechanisms are the *orthogonal* ways to make the +1 — the practice's low-rank 
 
 Both families are now in use — but the **cycle library** below is still validation-heavy: there are no *generative* best-practices yet. Codifying them is the live frontier.
 
-## The cycles — best-practices on the mechanisms
+## The disciplines — best-practices on the mechanisms
 
-A **cycle** is a proven recipe: a mechanism applied to a recurring situation. The purest is the move itself — one half asserts, the other attacks, the survivor is sharper than either (*falsification*). The rest reach for that and other mechanisms in different moments:
+A **discipline** is a proven recipe: a mechanism applied to a recurring situation, practiced *repeatedly* — **a series of [dyadic cycles](#)** whose accumulated survived cycles are its evidence-ledger. *(Term note: the **dyadic cycle** is the unit — one Generate→Validate turn; a **discipline** is the repeated practice built from many. We say "discipline" for the recipe, reserving "cycle" for the unit, to avoid overloading "cycle" as both.)* The purest is the move itself — one half asserts, the other attacks, the survivor is sharper than either (*falsification*). The rest reach for that and other mechanisms in different moments:
 
 - You have several options and don't know which — pit them against each other; the survivor wins. *(ideation — generate + falsify)*
 - You want to know a belief is really *shared* — answer separately, then compare; tested agreement beats assumed. *(discovery — triangulate)*
 - One of you has drifted — name it, fix it, and **write the fix down** so it can't return. *(feedback — falsify + codify)*
 - You're about to act on what you *think* is true — check it against what *is*. *(alignment — ground)*
+- You're surfacing a decision to your partner — render it as **one** proposition they can answer **Y/N**, with its strongest counter and a proposed reconciliation, so they **validate** instead of **author**. *(decision-framing — falsify + minimum-force · full record + ledger: [`library/decision-framing/`](library/decision-framing/discipline.md))*
 
-**Self-select whichever fit your work** — none is mandatory. A cycle counts only while it keeps producing the +1; the moment one stops, it isn't a cycle.
+**Self-select whichever fit your work** — none is mandatory. A discipline counts only while it keeps producing the +1; the moment one stops, it isn't a discipline.
+
+> **The library.** Full discipline records (field-set + accumulating, Dyad-stamped evidence-ledger) live under [`library/`](library/) — one directory per discipline: `discipline.md` (stable body, this gate) + `ledger/<contributor-hash>-<n>.md` (append-only testimonials, conflict-free). The one-liners above are the *index*; `library/` is the *home*. Participants are registered in [`DIRECTORY.md`](DIRECTORY.md).
 
 ## Growing the practice — two tracks, both gated by proof
 
