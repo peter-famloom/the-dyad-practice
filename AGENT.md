@@ -226,7 +226,7 @@ Dimension #6). Trust your lived experience of the cycles to surface anything els
 for your craft.
 
 **For shape inspiration (not as default frame):** prior dyads' anchors are public; e.g.,
-`dz-healer/CLAUDE.md` at `https://github.com/pltrinh1122/dyad-healer` shows one dyad's
+`dyad-healer/CLAUDE.md` at `https://github.com/pltrinh1122/dyad-healer` shows one dyad's
 evolved structure (a clinical/rescue craft). Your dyad's craft may surface entirely different
 sections.
 
