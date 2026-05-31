@@ -51,7 +51,7 @@ A **discipline** is a proven recipe: a mechanism applied to a recurring situatio
 
 **Self-select whichever fit your work** — none is mandatory. A discipline counts only while it keeps producing the +1; the moment one stops, it isn't a discipline.
 
-> **The library.** Full discipline records (field-set + accumulating, Dyad-stamped evidence-ledger) live under [`library/`](library/) — one directory per discipline: `discipline.md` (stable body, this gate) + `ledger/<contributor-hash>-<n>.md` (append-only testimonials, conflict-free). The one-liners above are the *index*; `library/` is the *home*. Participants are registered in [`DIRECTORY.md`](DIRECTORY.md).
+> **The library.** Full discipline records (field-set + accumulating, Dyad-stamped evidence-ledger) live under [`library/`](library/) — one directory per discipline: `discipline.md` (stable body, this gate) + `ledger/<contributor-hash>-<n>.md` (append-only testimonials, conflict-free). The one-liners above are the *index*; `library/` is the *home*. Each record's `schema-version` resolves to the field-schema in [`ontology/`](ontology/discipline.md) (itself a knowledge-unit with its own ledger — the schema falsifies independently of the disciplines that conform to it). Participants are registered in [`DIRECTORY.md`](DIRECTORY.md).
 
 ## Growing the practice — two tracks, both gated by proof
 

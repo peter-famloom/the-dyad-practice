@@ -6,7 +6,7 @@
 > second testimonial:** the seed ledger is single-dyad (n=5 deep); breadth accrues via Participate.
 
 - **origin (proposer Dyad-ID):** `sha256:4c42be0b…f000` (dyad-steward)
-- **schema-version:** discipline-ontology @ 2026-05-31
+- **schema-version:** discipline-ontology @ 2026-05-31 → [`ontology/discipline.md`](../../ontology/discipline.md)
 - **lineage:** none (origin record)
 
 ## Index line (for the declaration §The disciplines — the *context-unit* projection)
