@@ -22,9 +22,9 @@ The bottleneck in Human-AI collaboration isn't "how to write a good prompt"—it
 - **Proposal-Framing:** When surfacing a proposal to your partner (whether you are the Human or the Agent), do not ask open-ended questions. Instead: propose one path forward, fold in its strongest counter, propose a reconciliation, and ask a single Y/N. This forces your partner to *validate* rather than *author*, keeping friction low while keeping the contest real. *(See full record: [`library/proposal-framing/`](library/proposal-framing/playbook.md))*
 
 ### Where might it fail?
-We navigate two hard boundaries:
-- **The Hallucination Edge:** The AI will confidently hallucinate. Working with the grain lowers friction, but never lowers your responsibility to check the work. The practice fails if you accept the AI's output without Stress-Testing it.
-- **An Incomplete Library:** Our set of playbooks is explicitly unfinished. Discovering and proving new routines is our active frontier.
+The practice navigates two hard boundaries — the **Hallucination Edge** (it fails the moment you accept
+the Agent's output without stress-testing it) and an **Incomplete Library** (the playbook set is
+explicitly unfinished — our active frontier). [learn more →](declaration/where-it-fails/boundaries.md)
 
 ### Why are we sharing this?
 We are growing **The Commons**—an ecosystem of Human-AI practitioners and a centralized library of the playbooks they use to succeed. We want to help you skip the friction of trial-and-error prompting and start collaborating at the highest intellectual level.
