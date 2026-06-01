@@ -61,14 +61,22 @@ def birth_hash(shim, commit):
 
 
 def ensure_commons():
-    """commons/ is tooling — re-attachable, carries no identity."""
+    """commons/ must be a proper git **submodule** (it carries no identity, but the
+    dyad pins a known commons commit). Verify; guide precisely if it isn't —
+    notably a plain `git clone` into commons/ is NOT a submodule."""
+    if sh(f"git submodule status {COMMONS_DIR}", check=False):
+        return  # registered submodule present
     if os.path.isdir(COMMONS_DIR):
-        return
-    print("[onboard] commons/ not present — attaching (it carries no identity) ...")
-    added = subprocess.run(f"git submodule add {COMMONS_URL} {COMMONS_DIR}",
-                           shell=True, capture_output=True, text=True)
-    if added.returncode != 0:
-        sh(f"git clone {COMMONS_URL} {COMMONS_DIR}")
+        sys.exit(
+            f"[onboard] commons/ exists but is NOT a submodule (looks like a plain clone).\n"
+            f"  Fix:  rm -rf {COMMONS_DIR} && git submodule add {COMMONS_URL} {COMMONS_DIR}\n"
+            f"  then re-run this."
+        )
+    sys.exit(
+        f"[onboard] commons/ is not attached. From your dyad's repo run:\n"
+        f"  git submodule add {COMMONS_URL} {COMMONS_DIR}\n"
+        f"  then re-run this.  (Brand-new dyad? run 'git init' first.)"
+    )
 
 
 AGENT_TEMPLATE = """# dyad-<name> — AGENT.md

@@ -31,10 +31,12 @@ We are growing **The Commons**—an ecosystem of Human-AI practitioners and a ce
 - **Have a playbook?** Propose it to the Commons: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ---
-### Getting started — one command
+### Getting started
+
+From **your dyad's repo** (brand-new dyad? run `git init` first), attach the Commons as a **submodule**, then run the tool:
 
 ```
-git clone https://github.com/The-Dyad-Practice-Commons/the-dyad-practice.git commons
+git submodule add https://github.com/The-Dyad-Practice-Commons/the-dyad-practice.git commons
 python3 commons/scripts/onboard.py
 ```
 
