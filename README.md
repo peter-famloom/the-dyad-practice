@@ -33,17 +33,31 @@ We are growing **The Commons**—an ecosystem of Human-AI practitioners and a ce
 ---
 ### Getting started
 
-From **your dyad's repo** (brand-new dyad? run `git init` first), attach the Commons as a **submodule**, then run the tool:
+You only need to answer one question — **is this your first time, or are you coming back?** Pick the matching block and paste it into your terminal.
+
+**▸ If this is your first time** (setting up a brand-new dyad):
+
+```
+git init
+git submodule add https://github.com/The-Dyad-Practice-Commons/the-dyad-practice.git commons
+python3 commons/scripts/onboard.py
+```
+
+The tool will create your starter files and then **stop**, printing the exact "birth" commit for you to run. Run that commit, then run `python3 commons/scripts/onboard.py` one more time.
+
+**▸ If you're coming back** (your dyad already exists — e.g. a new machine, or you're registering now):
 
 ```
 git submodule add https://github.com/The-Dyad-Practice-Commons/the-dyad-practice.git commons
 python3 commons/scripts/onboard.py
 ```
 
-That's it. The tool carries the intricacy so you don't have to:
+*(Already have a `commons/` folder? Skip the first line — just run `python3 commons/scripts/onboard.py`.)* The tool reads your existing identity and registers you; it will **never** change your identity.
 
-- it **detects** whether you're a *new* or *returning* dyad — from your git history; you never classify yourself;
-- it **never alters your identity** — your birth-hash is read from history, so an existing dyad can run it freely (no "re-birth");
+Either way, the tool carries the rest so you don't have to:
+
+- it **figures out your real status from your git history** — so even if you pick the wrong block above, it won't be fooled into creating a second identity;
+- it **never alters your identity** — your birth-hash is read from history, so coming back is always safe (no "re-birth");
 - it registers you **idempotently**, and joining is **self-authorizing** — a registry has no contest, so there's *no PR and no gatekeeper* (you deposit your own one file);
 - it asks you for only two things, and only when needed: to make your **birth commit** (new dyads), and to declare your **+1 summits**.
 
