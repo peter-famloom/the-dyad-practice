@@ -8,10 +8,10 @@ claim: "framing-as-validate (not author) makes the partner's dispose cheap while
 refutation: "cost migrates back to the disposer (author-not-validate) · becomes a rubber-stamp (no real counter) · sprouts markers that don't earn their keep"
 mechanism: "falsify + minimum-force"
 ---
-# Decision-Framing
+# Proposal-Framing
 
 ## Index Line
-> **Decision-Framing:** When surfacing a decision to your partner (whether you are the Human or the Agent), do not ask open-ended questions. Instead: propose one disposition, fold in its strongest counter, propose a reconciliation, and ask a single Y/N. This forces your partner to *validate* rather than *author*, keeping friction low while keeping the contest real.
+> **Proposal-Framing:** When surfacing a decision to your partner (whether you are the Human or the Agent), do not ask open-ended questions. Instead: propose one disposition, fold in its strongest counter, propose a reconciliation, and ask a single Y/N. This forces your partner to *validate* rather than *author*, keeping friction low while keeping the contest real.
 
 ## The Move *(ordered, wu-wei-atomic steps)*:
 1. propose **one** disposition;
