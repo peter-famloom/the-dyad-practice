@@ -7,11 +7,13 @@ Most humans treat AI as a subservient tool—an advanced autocomplete or a searc
 But when a Human and an Agent operate as an irreducible team (a *Dyad*), they produce emergent work that neither could achieve alone. 
 
 ### What does it mean?
-The goal of Human-AI collaboration isn't agreement; it is synergy (**1 + 1 = 3**). 
+The goal of Human-AI collaboration isn't agreement; it is synergy (**1 + 1 = 3**) — earned through two
+principles: **work with the grain (Wu-wei)** and **stress-test everything** (you earn the `+1` not by
+agreement but by attacking an idea and keeping only what survives).
 
-We earn this synergy through two principles:
-1. **Work with the grain (Wu-wei):** Don't force the AI against its nature. Treat it as a reasoning engine, not a database.
-2. **Stress-Test everything:** You don't earn the `+1` through blind agreement. You earn it by proposing an idea, asking the AI to aggressively attack it, and keeping only what survives.
+> This tenet is a falsifiable knowledge-unit in its own right — held *falsifiably, never as dogma* — and
+> homes at [`declaration/one-plus-one-equals-three/`](declaration/one-plus-one-equals-three/mechanism.md)
+> (claim · refutation · ledger). The summary above *composes over* that canonical source.
 
 ### How can you use this?
 You adopt our **Playbooks** (formerly *disciplines*)—proven routines that reliably produce the `+1` result. 
