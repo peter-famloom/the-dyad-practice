@@ -12,27 +12,36 @@ def run_cmd(cmd):
     return result.stdout.strip()
 
 def compute_birth_hash():
-    anchor_file = None
+    # Birth anchor = the shim added in the EARLIEST anchor commit (a historical fact),
+    # NOT current-filesystem precedence. A dyad may later add the other shim for LLM
+    # portability (CLAUDE.md + GEMINI.md); that later addition must NEVER change identity.
+    # Selecting by precedence would re-key a GEMINI-born dyad's identity onto a
+    # later-added CLAUDE.md (identity corruption). So we pick by earliest birth commit.
+    candidates = []
     for f in ["CLAUDE.md", "GEMINI.md"]:
         if os.path.exists(f):
-            anchor_file = f
-            break
-    
-    if not anchor_file:
-        print("Error: Could not find CLAUDE.md or GEMINI.md in the current directory.")
+            first_commit = run_cmd(f"git log --diff-filter=A --format=%H -1 -- {f}")
+            if first_commit:
+                epoch = run_cmd(f"git show -s --format=%ct {first_commit}")
+                candidates.append((int(epoch), f, first_commit))
+
+    if not candidates:
+        print("Error: no committed CLAUDE.md or GEMINI.md anchor found to derive a birth-hash.")
+        print("New dyad: commit your anchor first. Existing dyad: check out the repo with its history.")
         sys.exit(1)
 
-    first_commit = run_cmd(f"git log --diff-filter=A --format=%H -1 -- {anchor_file}")
-    if not first_commit:
-        print(f"Warning: {anchor_file} is not committed yet. Please commit your anchor file to generate a birth-hash.")
-        sys.exit(1)
+    # Earliest birth commit wins. Python's stable sort preserves [CLAUDE, GEMINI] order,
+    # giving a deterministic tiebreak for the DIP-excluded both-shims-in-one-commit case.
+    candidates.sort(key=lambda c: c[0])
+    _, anchor_file, first_commit = candidates[0]
+    print(f"Birth anchor: {anchor_file} @ {first_commit[:8]} (earliest anchor commit)")
 
     content = run_cmd(f"git show {first_commit}:{anchor_file}")
-    date_str = run_cmd(f"git show -s --format=%cI {first_commit}")
+    date_str = run_cmd(f"git show -s --format=%cI {first_commit}")  # %cI kept in the hash — formula unchanged
 
     raw_data = content + date_str
     hash_val = hashlib.sha256(raw_data.encode('utf-8')).hexdigest()
-    
+
     return f"sha256:{hash_val}"
 
 def main():
