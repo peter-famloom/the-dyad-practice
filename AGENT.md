@@ -1,6 +1,6 @@
 # AGENT.md — Dyad-Practice Instantiation Template
 
-> **You are reading AGENT.md from the parent form (`https://github.com/pltrinh1122/the-dyad-practice`).**
+> **You are reading AGENT.md from the parent form (`https://github.com/The-Dyad-Practice-Commons/the-dyad-practice`).**
 >
 > You are a fresh agent at the first contact of a new dyad's instantiation. Your human Operator
 > has already read the form's README.md and chosen the Dyad Practice — that's why you're here.
@@ -241,7 +241,7 @@ operates per the discipline you authored — not per this template.
 
 ## Cross-references
 
-- **Parent form:** `https://github.com/pltrinh1122/the-dyad-practice` — the form's grounding
+- **Parent form:** `https://github.com/The-Dyad-Practice-Commons/the-dyad-practice` — the form's grounding
   identity declaration (`README.md`); your seed grain G0.
 - **Form-PR-gate:** the form's founding Operator handles all form-level contributions per
   README's `§Governance`. If your dyad evolves a mechanism, cycle, scaffold, or other form-

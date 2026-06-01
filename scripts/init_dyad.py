@@ -3,7 +3,7 @@ import os
 import sys
 import subprocess
 
-COMMONS_REPO_URL = "https://github.com/pltrinh1122/the-dyad-practice.git"
+COMMONS_REPO_URL = "https://github.com/The-Dyad-Practice-Commons/the-dyad-practice.git"
 COMMONS_DIR = "commons"
 
 def run_cmd(cmd):
@@ -26,7 +26,7 @@ def scaffold_files():
 
 > **Universal instruction layer for the dyad.** Load this at session start via the platform-specific shims (`CLAUDE.md` / `GEMINI.md`).
 > 
-> The form lives at <https://github.com/pltrinh1122/the-dyad-practice>. Read `commons/CONTRIBUTING.md` for the canonical rules.
+> The form lives at <https://github.com/The-Dyad-Practice-Commons/the-dyad-practice>. Read `commons/CONTRIBUTING.md` for the canonical rules.
 
 ---
 """
