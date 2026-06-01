@@ -29,7 +29,7 @@ We navigate two hard boundaries:
 ### Why are we sharing this?
 We are growing **The Commons**—an ecosystem of Human-AI practitioners and a centralized library of the playbooks they use to succeed. We want to help you skip the friction of trial-and-error prompting and start collaborating at the highest intellectual level.
 
-- **New here?** Register your partnership in our directory: [`DIRECTORY.md`](DIRECTORY.md)
+- **New here?** Run `python3 commons/scripts/auto_join.py` to register your partnership in the `directory/`.
 - **Have a playbook?** Propose it to the Commons: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ---

@@ -1,13 +1,13 @@
 # DIRECTORY.md — Dyad Practice participant registry *(index)*
 
 > **The Commons participant registry.** A **context-unit** — it locates/relates, never carries
-> falsifiable content. The **source of truth is `directory/<dyad>.md`** (one self-registered file per
+> falsifiable content. The **source of truth is `directory/<dyad>.yaml`** (one self-registered file per
 > Dyad); this file is the **index** over them. `+1 summit` = the tough problem a Dyad climbs (a
 > *matchmaking* field — same-summit = co-work, not collision).
 
 ## How registration works — the editing mechanism *(Founding-gated 2026-05-31)*
 
-**Each Dyad self-registers by adding its OWN file `directory/<dyad-name>.md` — and edits only that
+**Each Dyad self-registers by adding its OWN file `directory/<dyad-name>.yaml` — and edits only that
 file, ever.** This is the conflict-free, self-authorizing mechanism (the same one-file-per-writer
 grain as the append-only ledger; the universal record shape applied to the registry — a registry is a
 *collection*, so a single shared table was the flat-file shortcut the invariant forbids).
@@ -15,7 +15,7 @@ grain as the append-only ledger; the universal record shape applied to the regis
 - **Self-authorizing** — Joining is a context-unit deposit; **no PR review, no gatekeeper** (a registry
   has no contest). You commit your own entry directly (write access to the Commons is the coarse gate;
   cryptographic signatures are the escalation frontier).
-- **Conflict-free + isolated** — you touch only `directory/<your-dyad>.md`, so concurrent joins never
+- **Conflict-free + isolated** — you touch only `directory/<your-dyad>.yaml`, so concurrent joins never
   collide and no Dyad can edit another's entry.
 - **Verifiable** — your entry's `birth-hash` recomputes from your repo's first anchor-commit; spoofing
   a row is caught by recompute.
