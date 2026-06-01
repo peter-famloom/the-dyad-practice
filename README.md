@@ -16,7 +16,7 @@ We earn this synergy through two principles:
 ### How can you use this?
 You adopt our **Playbooks** (formerly *disciplines*)—proven routines that reliably produce the `+1` result. 
 
-The bottleneck in Agentic Coding isn't "how to write a good prompt"—it is the friction of improvising a shared mental model on the fly. Instead of guessing how to interact, both the Human and the Agent execute these tested practices:
+The bottleneck in Human-AI collaboration isn't "how to write a good prompt"—it is the friction of improvising a shared mental model on the fly. Instead of guessing how to interact, both the Human and the Agent execute these tested practices:
 - **Proposal-Framing:** When surfacing a decision to your partner (whether you are the Human or the Agent), do not ask open-ended questions. Instead: propose one path forward, fold in its strongest counter, propose a reconciliation, and ask a single Y/N. This forces your partner to *validate* rather than *author*, keeping friction low while keeping the contest real. *(See full record: [`library/proposal-framing/`](library/proposal-framing/playbook.md))*
 - **Alignment:** Force the AI to explain your goal back to you to prove you share the same context. *(See full record: [`library/alignment/`](library/alignment/playbook.md))*
 - **Feedback:** When the AI errs, write down the exact rule it broke and save it to its core instructions to prevent recurrence. *(See full record: [`library/feedback/`](library/feedback/playbook.md))*
