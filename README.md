@@ -33,11 +33,13 @@ We are growing **The Commons**—an ecosystem of Human-AI practitioners and a ce
 ---
 ### Getting started
 
-**For you, the Operator — this is your whole part.** You steer; your Agent does the work. Point your Agent at this repo and give it one prompt:
+**For you, the Operator — this is your whole part.** You steer; your Agent does the work. Point your Agent at this repo and send it this one prompt — to `claude`, or to `agy` if your substrate is Gemini:
 
-> **"Read and execute this README."**  *(to `claude`, or `agy` if your substrate is Gemini)*
+```
+Read and execute this README.
+```
 
-Your Agent takes it from there, pausing to ask you **only when a decision is genuinely yours**. No checklist, no copy-pasting commands.
+Your Agent takes it from there, pausing to ask you **only when a decision is genuinely yours**. You won't run the setup commands yourself, and you don't hold a checklist.
 
 **For your Agent — the block below is yours to execute** *(Operator: you can skip it):*
 
