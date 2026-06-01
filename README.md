@@ -18,8 +18,8 @@ You adopt our **Playbooks** (formerly *disciplines*)—proven routines that reli
 
 Instead of guessing how to prompt your Agent, you use tested practices:
 - **Proposal-Framing:** When surfacing a decision to your partner (whether you are the Human or the Agent), do not ask open-ended questions. Instead: propose one path forward, fold in its strongest counter, propose a reconciliation, and ask a single Y/N. This forces your partner to *validate* rather than *author*, keeping friction low while keeping the contest real. *(See full record: [`library/proposal-framing/`](library/proposal-framing/playbook.md))*
-- **Alignment:** Force the AI to explain your goal back to you to prove you share the same context.
-- **Feedback:** When the AI errs, write down the exact rule it broke and save it to its core instructions to prevent recurrence.
+- **Alignment:** Force the AI to explain your goal back to you to prove you share the same context. *(See full record: [`library/alignment/`](library/alignment/playbook.md))*
+- **Feedback:** When the AI errs, write down the exact rule it broke and save it to its core instructions to prevent recurrence. *(See full record: [`library/feedback/`](library/feedback/playbook.md))*
 
 ### Where might it fail?
 We navigate two hard boundaries:
