@@ -41,7 +41,7 @@ We are growing **The Commons**—an ecosystem of Human-AI practitioners and a ce
 Read and execute this README.
 ```
 
-Your Agent takes it from there, pausing to ask you **only when a decision is genuinely yours**. You won't run the setup commands yourself, and you don't hold a checklist.
+Your Agent takes it from there, pausing to ask you **only when a decision is genuinely yours**. You don't author the steps or hold a checklist. One expected pause: on a sandboxed Agent you'll be asked to **approve** the two external-code steps — adding the `commons` submodule and running `onboard.py`. That's human-in-the-loop on external code working **as intended**, not the protocol breaking; approve them and your Agent continues.
 
 **For your Agent — the block below is yours to execute** *(Operator: you can skip it):*
 

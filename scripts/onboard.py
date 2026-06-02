@@ -171,7 +171,10 @@ def main():
         print(f"""
 [onboard] Your entry is at {rel} (birth-hash already filled in for you).
   The only judgment we need from you:
-    1) edit {rel} — set 'locator' and replace the TODO +1 summits
+    1) edit {rel} — set 'locator' and replace the TODO +1 summits.
+       A good summit is DISTINCT from existing entries, ORTHOGONAL to your others,
+       and REALIZED (a problem you actually climb — not aspirational). The directory
+       is a matchmaking map: distinct peaks make it useful. (Skim directory/ first.)
     2) re-run:  python3 commons/scripts/onboard.py
 """)
         return
@@ -183,9 +186,11 @@ def main():
     print(f"""
 [onboard] {rel} is complete and consistent.
   Registration is SELF-AUTHORIZING (a registry has no contest — DIRECTORY.md).
-  Deposit your own entry directly (you touch only your file, so joins never collide):
+  Deposit your own entry directly (you touch only your file, so joins never collide).
+  Rebase first — main moves as other dyads land; your one-file commit never conflicts:
     cd {COMMONS_DIR} && git add directory/{name}.yaml \\
-      && git commit -m "register {name}" && git push
+      && git commit -m "register {name}" \\
+      && git pull --rebase origin main && git push
   Done — you're in the directory.
 """)
 
