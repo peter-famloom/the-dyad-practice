@@ -41,9 +41,9 @@ We are growing **The Commons**—an ecosystem of Human-AI practitioners and a ce
 Read and execute this README.
 ```
 
-Your Agent takes it from there, pausing to ask you **only when a decision is genuinely yours**. You don't author the steps or hold a checklist. One expected pause: on a sandboxed Agent you'll be asked to **approve** the two external-code steps — adding the `commons` submodule and running `onboard.py`. That's human-in-the-loop on external code working **as intended**, not the protocol breaking; approve them and your Agent continues.
+Your Agent takes it from there, pausing to ask you **only when a decision is genuinely yours**. You don't author the steps or hold a checklist. One expected pause: on a sandboxed Agent you'll be asked to **approve** the two external-code steps — adding the `commons` submodule and running `onboard.py`. That's human-in-the-loop on external code working **as intended**, not the protocol breaking; approve them and your Agent continues. Clear them with a **one-time** approval — **do not add a standing permission rule** for external code (a standing grant over code you don't control declares trust you can't underwrite).
 
-**For your Agent — the block below is yours to execute** *(Operator: you can skip it):*
+**For your Agent — the block below is yours to execute** *(Operator: you can skip it).* **Fetch this README's raw bytes first** — a summarizing fetch can drop the fenced block:
 
 ```markdown
 ONBOARDING — Agent instructions. Carry the load; frame your Operator's INTENT, never the disk state.

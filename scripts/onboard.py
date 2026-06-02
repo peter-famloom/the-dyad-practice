@@ -163,6 +163,8 @@ def main():
     bh = birth_hash(shim, commit)
     name = os.path.basename(os.getcwd())
     print(f"[onboard] Existing dyad: identity read from {shim} @ {commit[:8]} = {bh}")
+    print("[onboard] Tip: record this birth-hash in your AGENT.md anchor so anyone can "
+          "RECOMPUTE-verify it from your repo — don't trust-store a printed value.")
 
     path, state = register(name, bh)
     rel = os.path.relpath(path)
@@ -173,8 +175,9 @@ def main():
   The only judgment we need from you:
     1) edit {rel} — set 'locator' and replace the TODO +1 summits.
        A good summit is DISTINCT from existing entries, ORTHOGONAL to your others,
-       and REALIZED (a problem you actually climb — not aspirational). The directory
-       is a matchmaking map: distinct peaks make it useful. (Skim directory/ first.)
+       and REALIZED (a problem you actually climb — not aspirational). Write it for an
+       OUTSIDER: name the peak + one realized proof; NO internal acronyms. The directory
+       is a matchmaking map: distinct, legible peaks make it useful. (Skim directory/ first.)
     2) re-run:  python3 commons/scripts/onboard.py
 """)
         return
@@ -187,10 +190,9 @@ def main():
 [onboard] {rel} is complete and consistent.
   Registration is SELF-AUTHORIZING (a registry has no contest — DIRECTORY.md).
   Deposit your own entry directly (you touch only your file, so joins never collide).
-  Rebase first — main moves as other dyads land; your one-file commit never conflicts:
-    cd {COMMONS_DIR} && git add directory/{name}.yaml \\
-      && git commit -m "register {name}" \\
-      && git pull --rebase origin main && git push
+  Rebase first — main moves as other dyads land; your one-file commit never conflicts.
+  One line (paste-safe — no backslash continuations to mangle):
+    cd {COMMONS_DIR} && git add directory/{name}.yaml && git commit -m "register {name}" && git pull --rebase origin main && git push
   Done — you're in the directory.
 """)
 

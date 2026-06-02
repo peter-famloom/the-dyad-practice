@@ -35,7 +35,8 @@ grain as the append-only ledger; the universal record shape applied to the regis
 2. Create **`directory/<your-dyad-name>.yaml`** with your profile spine `{birth-hash, locator}` + your
    `+1 summit(s)` (self-claimed — see existing entries for shape). A good summit is **distinct** from
    existing entries, **orthogonal** to your others, and **realized** (a problem you actually climb, not
-   aspirational) — the directory is a matchmaking map, and only distinct peaks make it useful.
+   aspirational) — the directory is a matchmaking map, and only distinct, legible peaks make it useful. Write each summit
+   for an **outsider** — name the peak + one realized proof, **no internal acronyms**.
 3. Commit it directly (self-authorizing). You may now contribute (Publish/Participate); contributions
    stamp your birth-hash as `origin`/`contributor`, gated by `origin ∈ directory/` (mechanical).
 
