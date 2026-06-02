@@ -1,0 +1,8 @@
+name: dyad-wu-wei
+birth_hash: "sha256:e56568927c8d3409e4f77824e91ab72a43515ba49dc4d1291a1ca689c0498d8f"
+locator: github.com/pltrinh1122/dyad-wu-wei
+summits:
+  # Keep each summit QUOTED — '#' and ':' are YAML-significant and will
+  # silently corrupt unquoted text (issue refs, ratios, times cluster here).
+  - "Materialized Autonomy Substrate: Encoded complex agentic mechanisms into a frictionless 'dark' substrate, establishing a purely topological execution machine."
+  - "Wu-wei Cognitive Offloading: Safely pushed the 1+1=3 tenet to its absolute limit by replacing all manual execution friction with deterministic, background-driven autonomy."
