@@ -51,7 +51,7 @@ def main():
     
     os.makedirs(ledger_dir, exist_ok=True)
     
-    playbook_file = f"{lib_dir}/playbook.md"
+    playbook_file = f"{lib_dir}/PLAYBOOK.md"
     if not os.path.exists(playbook_file):
         print(f"Scaffolding {playbook_file}...")
         content = f"""---

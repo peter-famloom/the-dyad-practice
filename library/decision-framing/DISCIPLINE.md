@@ -1,12 +1,12 @@
 # Decision-Framing — a `discipline`
 
-> **A Commons library record.** Structure: `discipline.md` = stable body (Founding-gated; rarely
+> **A Commons library record.** Structure: `DISCIPLINE.md` = stable body (Founding-gated; rarely
 > edited); `ledger/` = append-only testimonials (mechanical contribution-gate, conflict-free). First
 > landed 2026-05-31 (Founding-Operator dispose); origin `dyad-steward`. **Provisional — seeking a
 > second testimonial:** the seed ledger is single-dyad (n=5 deep); breadth accrues via Participate.
 
 - **origin (proposer Dyad-ID):** `sha256:4c42be0b…f000` (dyad-steward)
-- **schema-version:** discipline-ontology @ 2026-05-31 → [`ontology/discipline/schema.md`](../../ontology/discipline/schema.md)
+- **schema-version:** discipline-ontology @ 2026-05-31 → [`ontology/discipline/SCHEMA.md`](../../ontology/discipline/SCHEMA.md)
 - **lineage:** none (origin record)
 
 ## Index line (for the declaration §The disciplines — the *context-unit* projection)

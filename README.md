@@ -12,19 +12,19 @@ principles: **work with the grain (Wu-wei)** and **stress-test everything** (you
 agreement but by attacking an idea and keeping only what survives).
 
 > This tenet is a falsifiable knowledge-unit in its own right — held *falsifiably, never as dogma* — and
-> homes at [`declaration/one-plus-one-equals-three/`](declaration/one-plus-one-equals-three/mechanism.md)
+> homes at [`declaration/one-plus-one-equals-three/`](declaration/one-plus-one-equals-three/MECHANISM.md)
 > (claim · refutation · ledger). The summary above *composes over* that canonical source.
 
 ### How can you use this?
 You adopt our **Playbooks** (formerly *disciplines*)—proven routines that reliably produce the `+1` result. 
 
 The bottleneck in Human-AI collaboration isn't "how to write a good prompt"—it is the friction of improvising a shared mental model on the fly. Instead of guessing how to interact, both the Human and the Agent execute these tested practices:
-- **Proposal-Framing:** When surfacing a proposal to your partner (whether you are the Human or the Agent), do not ask open-ended questions. Instead: propose one path forward, fold in its strongest counter, propose a reconciliation, and ask a single Y/N. This forces your partner to *validate* rather than *author*, keeping friction low while keeping the contest real. *(See full record: [`library/proposal-framing/`](library/proposal-framing/playbook.md))*
+- **Proposal-Framing:** When surfacing a proposal to your partner (whether you are the Human or the Agent), do not ask open-ended questions. Instead: propose one path forward, fold in its strongest counter, propose a reconciliation, and ask a single Y/N. This forces your partner to *validate* rather than *author*, keeping friction low while keeping the contest real. *(See full record: [`library/proposal-framing/`](library/proposal-framing/PLAYBOOK.md))*
 
 ### Where might it fail?
 The practice navigates two hard boundaries — the **Hallucination Edge** (it fails the moment you accept
 the Agent's output without stress-testing it) and an **Incomplete Library** (the playbook set is
-explicitly unfinished — our active frontier). [learn more →](declaration/where-it-fails/boundaries.md)
+explicitly unfinished — our active frontier). [learn more →](declaration/where-it-fails/BOUNDARIES.md)
 
 ### Why are we sharing this?
 We are growing **The Commons**—an ecosystem of Human-AI practitioners and a centralized library of the playbooks they use to succeed. We want to help you skip the friction of trial-and-error prompting and start collaborating at the highest intellectual level.
@@ -71,6 +71,6 @@ onboard.py is the backstop: reads real status from git history (no re-birth), re
 self-authorizing (a registry has no contest -> no PR), and asks only for the birth commit + the +1 summits.
 ```
 
-*(Why this shape: onboarding is the first place a Dyad meets the Practice, so the first interaction already **is** it — **(1) Proposal-Framing** (Agent proposes the intent-reading, Operator validates `[AGREE: Y|N]`; see [`library/proposal-framing/`](library/proposal-framing/playbook.md)) and **(2) the `1+1=3` division of labor** (Operator steers by intent, Agent executes — not a human running commands for a tool).)*
+*(Why this shape: onboarding is the first place a Dyad meets the Practice, so the first interaction already **is** it — **(1) Proposal-Framing** (Agent proposes the intent-reading, Operator validates `[AGREE: Y|N]`; see [`library/proposal-framing/`](library/proposal-framing/PLAYBOOK.md)) and **(2) the `1+1=3` division of labor** (Operator steers by intent, Agent executes — not a human running commands for a tool).)*
 
 *(Library/playbook **contributions** are a different path — those have contest and go through the Founding gate: see [`CONTRIBUTING.md`](CONTRIBUTING.md). Registering in the directory does not.)*

@@ -22,10 +22,10 @@ library by **survived falsification**, never by assertion.
 
 **Anyone may propose; the Founding Operator gates. The dispose gate is a pull request:**
 
-1. Add your Playbook at `library/<playbook-name>/playbook.md`.
+1. Add your Playbook at `library/<playbook-name>/PLAYBOOK.md`.
 2. Include a **ledger** at `library/<playbook-name>/ledger/` — the evidence: the cycles where the
    routine was attacked and *survived*. A claim without a ledger is not yet a Playbook.
-   *(See [`library/proposal-framing/`](library/proposal-framing/playbook.md) as the worked example —
+   *(See [`library/proposal-framing/`](library/proposal-framing/PLAYBOOK.md) as the worked example —
    playbook + ledger.)*
 3. Open a pull request. The **Founding Operator** reviews and merges; the merge **is** the dispose.
 
