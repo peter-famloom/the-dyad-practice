@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
 import os
+import re
 import sys
 import yaml
 
 REQUIRED_FIELDS = {'name', 'birth_hash', 'locator', 'summits'}
+# A dyad name: 'dyad-' prefix + kebab-case segments. Keeps the directory self-documenting and
+# spoof-resistant (a generic/garbage row like "Project Template" can't land). Filename must equal
+# '<name>.yaml'; the birth-hash must be a real sha256 digest, not a placeholder.
+NAME_RE = re.compile(r'^dyad-[a-z0-9]+(-[a-z0-9]+)*$')
+HASH_RE = re.compile(r'^sha256:[0-9a-f]{64}$')
 
 def validate_file(filepath):
     try:
@@ -34,7 +40,23 @@ def validate_file(filepath):
             if not isinstance(data[field], str) or not data[field].strip():
                 print(f"FAIL {filepath}: '{field}' must be a non-empty string.")
                 return False
-                
+
+        if not NAME_RE.match(data['name']):
+            print(f"FAIL {filepath}: name {data['name']!r} must be 'dyad-<kebab>' "
+                  f"(lowercase, e.g. dyad-krishna) — {NAME_RE.pattern}.")
+            return False
+
+        expected = data['name'] + '.yaml'
+        if os.path.basename(filepath) != expected:
+            print(f"FAIL {filepath}: filename must equal '{expected}' (match the 'name' field) — "
+                  "deposit only your own file.")
+            return False
+
+        if not HASH_RE.match(data['birth_hash']):
+            print(f"FAIL {filepath}: birth_hash {data['birth_hash']!r} must be a real "
+                  "'sha256:<64 hex>' digest, not a placeholder.")
+            return False
+
         print(f"PASS {filepath}")
         return True
     except yaml.YAMLError as e:
