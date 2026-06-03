@@ -149,7 +149,13 @@ def cmd_respond(ledger, a):
 
 def dm_items(ledger, me):
     """Yield (sender, file_dict, key) for every DM addressed to `me`, pulled from each OTHER dyad's repo
-    (sender-hosted, #3). The Commons directory is the subscription registry; read-only gh."""
+    (sender-hosted, #3). The Commons directory is the subscription registry; read-only gh.
+
+    `dm_locator` (optional directory field): a dyad whose anchor repo is PRIVATE may host its mailbox
+    in a separate public repo — `dm_locator` points there; absent, `locator` is the mailbox (current
+    behavior, fully backward-compatible). Anti-spoof rule: the mailbox MUST be owned by the same
+    account as `locator` (mailbox != identity; a lookalike mailbox under another owner is not that
+    dyad) — enforced here AND in validate_registry.py."""
     ddir = os.path.join(os.path.dirname(ledger), "directory")
     for entry in sorted(os.listdir(ddir)) if os.path.isdir(ddir) else []:
         if not entry.endswith(".yaml"):
@@ -160,7 +166,10 @@ def dm_items(ledger, me):
         m = re.search(r"github\.com[/:]([^/]+)/(.+?)/?$", str(d.get("locator", "")))
         if not m:
             continue
-        r = subprocess.run(["gh", "api", f"repos/{m.group(1)}/{m.group(2)}/contents/dm/{me}"],
+        dm_m = re.search(r"github\.com[/:]([^/]+)/(.+?)/?$", str(d.get("dm_locator", "") or "")) or m
+        if dm_m.group(1).lower() != m.group(1).lower():  # same-owner rule (anti-spoof)
+            continue
+        r = subprocess.run(["gh", "api", f"repos/{dm_m.group(1)}/{dm_m.group(2)}/contents/dm/{me}"],
                            capture_output=True, text=True)
         if r.returncode != 0:
             continue

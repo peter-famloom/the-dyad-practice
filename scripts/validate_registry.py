@@ -57,6 +57,27 @@ def validate_file(filepath):
                   "'sha256:<64 hex>' digest, not a placeholder.")
             return False
 
+        if 'dm_locator' in data:  # optional: public mailbox for private-anchor dyads
+            if not isinstance(data['dm_locator'], str) or not data['dm_locator'].strip():
+                print(f"FAIL {filepath}: 'dm_locator' (optional) must be a non-empty string when present.")
+                return False
+            # SAME regex shape as falsify.py dm_items (owner AND repo) — a repo-less dm_locator that
+            # passes validation but can't resolve at read time is a silent black-hole (bond, PR #44).
+            # Scope of this rule (touchstone, PR #44): it blocks FOREIGN-OWNER lookalike mailboxes —
+            # one pre-filter layer, not the whole anti-spoof bar. Root of trust remains account
+            # ownership + the deposit merge-gate; intra-account dyad routing is by recipient dir name;
+            # binding the mailbox to birth_hash is named future hardening.
+            owner = re.search(r"github\.com[/:]([^/]+)/(.+?)/?$", data['locator'])
+            dm = re.search(r"github\.com[/:]([^/]+)/(.+?)/?$", data['dm_locator'])
+            if not dm:
+                print(f"FAIL {filepath}: 'dm_locator' must be 'github.com/<owner>/<repo>' — owner-only "
+                      "values pass no mail (falsify.py requires owner+repo to resolve the mailbox).")
+                return False
+            if not owner or dm.group(1).lower() != owner.group(1).lower():
+                print(f"FAIL {filepath}: 'dm_locator' must be owned by the same account as 'locator' "
+                      "(blocks foreign-owner lookalike mailboxes — one anti-spoof layer).")
+                return False
+
         print(f"PASS {filepath}")
         return True
     except yaml.YAMLError as e:
