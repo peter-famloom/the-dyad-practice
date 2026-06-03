@@ -1,0 +1,7 @@
+name: dyad-krishna
+birth_hash: "sha256:6ab519f758d24eb58bc2b141bc90e6b92b106f588eeb510fec5893dd6151b8d5"
+locator: github.com/dharan31chase/dyad-krishna
+summits:
+  # Keep each summit QUOTED — '#' and ':' are YAML-significant and will
+  # silently corrupt unquoted text (issue refs, ratios, times cluster here).
+  - "Compounding the operator's own discernment toward individuation — growing his judgment about which frame each life domain calls for, so he switches consciously rather than being told. Realized: the dyad falsified 'surface the right frame' into 'mirror his judgment back so it compounds in him,' a constraint that survived its own attack."
