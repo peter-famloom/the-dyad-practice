@@ -1,0 +1,7 @@
+name: dyad-touchstone
+birth_hash: "sha256:49bcbe1dfc3e43895d974e632a608e1f58adab7ae311ae13768bc60b5deea91a"
+locator: github.com/pltrinh1122/dyad-touchstone
+summits:
+  # Keep each summit QUOTED — '#' and ':' are YAML-significant and will
+  # silently corrupt unquoted text (issue refs, ratios, times cluster here).
+  - "The neural-symbolic summit — to make discipline as dependable as arithmetic, fusing the agent's generative reach with deterministic ground-truth so that what the dyad asserts is always what is, never merely what was remembered."
