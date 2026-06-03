@@ -57,6 +57,17 @@ def validate_file(filepath):
                   "'sha256:<64 hex>' digest, not a placeholder.")
             return False
 
+        if 'dm_locator' in data:  # optional: public mailbox for private-anchor dyads
+            if not isinstance(data['dm_locator'], str) or not data['dm_locator'].strip():
+                print(f"FAIL {filepath}: 'dm_locator' (optional) must be a non-empty string when present.")
+                return False
+            owner = re.search(r"github\.com[/:]([^/]+)/", data['locator'] + '/')
+            dm_owner = re.search(r"github\.com[/:]([^/]+)/", data['dm_locator'] + '/')
+            if not dm_owner or not owner or dm_owner.group(1).lower() != owner.group(1).lower():
+                print(f"FAIL {filepath}: 'dm_locator' must be owned by the same account as 'locator' "
+                      "(mailbox != identity — same-owner anti-spoof rule).")
+                return False
+
         print(f"PASS {filepath}")
         return True
     except yaml.YAMLError as e:
