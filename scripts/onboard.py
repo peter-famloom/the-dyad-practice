@@ -182,17 +182,27 @@ def main():
 """)
         return
 
-    # complete: validate, then hand over the self-authorizing deposit (no PR; a registry has no contest)
+    # complete: validate, then hand over the self-authorizing deposit (no contest; direct push or auto-merging PR)
     vr = os.path.join(COMMONS_DIR, "scripts", "validate_registry.py")
     if os.path.exists(vr):
         sh(f"python3 {vr}", check=False)
+    slug = "The-Dyad-Practice-Commons/the-dyad-practice"
     print(f"""
 [onboard] {rel} is complete and consistent.
-  Registration is SELF-AUTHORIZING (a registry has no contest — DIRECTORY.md).
-  Deposit your own entry directly (you touch only your file, so joins never collide).
-  Rebase first — main moves as other dyads land; your one-file commit never conflicts.
-  One line (paste-safe — no backslash continuations to mangle):
-    cd {COMMONS_DIR} && git add directory/{name}.yaml && git commit -m "register {name}" && git pull --rebase origin main && git push
+  Registration is SELF-AUTHORIZING — a registry has no contest, so NO HUMAN reviews it (DIRECTORY.md).
+  You touch only your own file, so joins never collide. Two deposit paths, same no-gate outcome:
+
+  • HAVE Commons write access — push directly:
+      cd {COMMONS_DIR} && git add directory/{name}.yaml && git commit -m "register {name}" && git pull --rebase origin main && git push
+
+  • NO write access (a plain push is rejected — this is the OPEN path, no invite needed) — open an
+    auto-merging PR from your own fork (standard GitHub fork-PR; it adds ONLY your entry → auto-merges):
+      cd {COMMONS_DIR} && git checkout -b register-{name} && git add directory/{name}.yaml && git commit -m "register {name}"
+      gh repo fork {slug} --remote --remote-name fork    # forks to your account + adds the 'fork' remote
+      git push fork register-{name}
+      gh pr create --repo {slug} --fill                  # opens the PR; the auto-merge check lands it
+    (The fork is just the PR vehicle — harmless, and you can delete it from your account anytime after it merges.)
+
   Done — you're in the directory.
 """)
 

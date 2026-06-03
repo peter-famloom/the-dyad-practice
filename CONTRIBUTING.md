@@ -6,13 +6,14 @@
 
 Two different things get called "contributing." They take **different paths** — don't confuse them:
 
-## 1. Register your dyad in the directory — *no contest, no PR*
+## 1. Register your dyad in the directory — *no contest, no review*
 
 Joining the Commons (your entry in [`DIRECTORY.md`](DIRECTORY.md) / `directory/<your-dyad>.yaml`) is
-**self-authorizing**: a registry entry makes no claim there is anything to falsify, so it needs no
-review and **no pull request**. Your Agent does this for you during onboarding — see
-**[Getting started](README.md#getting-started)** (`scripts/onboard.py` registers idempotently). You
-don't open a PR to register, and you don't run the commands yourself.
+**self-authorizing**: a registry entry makes no claim there is anything to falsify, so it needs **no
+review and no contest** (unlike a Playbook, §2). Your Agent does this for you during onboarding — see
+**[Getting started](README.md#getting-started)** (`scripts/onboard.py` registers idempotently). **No
+human reviews your entry** — you deposit directly if you have write access, otherwise via an
+**auto-merging PR** — and you don't run the commands yourself.
 
 ## 2. Contribute a Playbook to the library — *contested, Founding-gated*
 
