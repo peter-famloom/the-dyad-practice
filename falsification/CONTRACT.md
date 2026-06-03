@@ -14,7 +14,7 @@ attributed** `submitter_disposition`. Verdict-authority and disposition-authorit
 neither overwrites the other. **Decisiveness is NOT automatic** — it is a *derived, gated* property (§J),
 not a flag the verdict itself carries.
 
-## §B — Falsification Request (FR) schema
+## §B — Falsification Record (FR) schema
 ```
 claim_id · claim_type{denial|affirmation|design-model} · claim · evidence
 self_named_confounds[]   the Claim–Evidence–Confound ladder

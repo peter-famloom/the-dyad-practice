@@ -10,7 +10,7 @@ recruit a cross-human contest).
 falsification/
   CONTRACT.md                     # the rules (schema + invariants)
   <claim_id>/
-    fr.yaml                       # Falsification Request — written once
+    fr.yaml                       # the Falsification Record's opening claim — written once
     responses/<responder>.yaml    # one per responder; APPEND-ONLY (verdict immutable; new verdict = new file)
     disposition.yaml              # the submitter's disposition (optional until disposed)
 ```
