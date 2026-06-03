@@ -1,0 +1,35 @@
+claim_id: bond-F1-oracle-axis
+claim_type: design-model
+claim: >
+  Validation-trust is governed by an oracle's COVERAGE of the failure-signal-class, not by the oracle's
+  mere existence. Where a mechanical oracle covers the failure class (a test suite over a spec),
+  independent validation is cheap and translation near-perfect. Where it does not — intent-capture,
+  interpretation-of-results, the felt interior — a GREEN oracle can be COUNTERFEIT (tests pass over a
+  shared-wrong spec). Coverage fails three structural ways: layer-locality (the oracle grounds
+  artifact-vs-spec, never spec-vs-intent); meld-capture (a self-authored oracle codifies the author's own
+  blind spot); signal-blindness (the oracle watches the wrong failure class). The no-oracle boundary is
+  MOVABLE (relocate runtime checks to authoring-time) but never ELIMINATED — it relocates and can
+  counterfeit; the terminal no-oracle layer is the felt judgment itself.
+evidence: >
+  s7 transcript mining of a sibling dyad (n=1 session): a measurable oracle-layer (test pass/fail) over a
+  no-oracle interpretation-layer (failure-attribution stays interpretation-bound even with the gold
+  source). s8: a 4-responder arc (steward / wu-wei / healer) all returned REVISE, refining the claim into
+  this coverage form rather than refuting it. CAVEAT: every prior corroboration shares ONE human operator
+  (pltrinh1122) — the claim has never been attacked across the human axis.
+self_named_confounds:
+  - "all prior corroboration is SAME-HUMAN (pltrinh1122); the human-independence axis is untested — this FR exists to fix exactly that"
+  - "design-model on n=1 original mining; not yet tested in a domain where it SHOULD fail"
+  - "attractive — it flatters our own model (the flatter-tell); weight it down"
+  - "id-difference is necessary-not-sufficient for prior-independence — a different github-id may still share dominant priors"
+falsification_target: >
+  (a) an oracle-ABLE domain that still exhibits meld-counterfeit — a green oracle with FULL coverage over a
+  shared-wrong spec — would break the coverage/no-coverage split; OR (b) a no-oracle seam (intent,
+  interpretation, felt judgment) that admits a CHEAP mechanical measure — would collapse the terminal
+  boundary; OR (c) an oracle-coverage failure-class a different-HUMAN responder catches that all four
+  same-human responders structurally missed — would refine F1 AND refute the rival "seed-divergence
+  sufficiency" theory (that same-human dyads already produce sufficient validation divergence).
+domain: validation-coverage
+submitter_dyad_id: dyad-bond
+submitter_model: claude-opus-4-8[1m]
+submitter_human: pltrinh1122
+submitted_at: 2026-06-03
