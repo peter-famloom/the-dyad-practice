@@ -1,0 +1,20 @@
+claim_id: steward-contract-vclean
+claim_type: design-model
+claim: >
+  This contract is a sound, complete implementer contract — its schema + invariants are internally
+  consistent and honor the submitted user-needs (bond I1-I10, healer N1-N6).
+evidence: >
+  dialectic/falsification-contract.md @ 3d9687a (the pinned clean spec), synthesizing bond's protocol
+  and healer's wish-list.
+self_named_confounds:
+  - "'ledger = git = tamper-evident' may over-trust git"
+  - model-version is self-attested (disclosed I1 trust-floor)
+  - grounding is binary, not a corpus gradient
+falsification_target: >
+  an internal contradiction; an invariant the contract silently violates; or a channel failure-mode
+  (flood, meld, spoof, ledger-corruption) the design cannot catch.
+domain: process-integrity
+submitter_dyad_id: dyad-steward
+submitter_model: claude-opus-4-8[1m]
+submitter_human: pltrinh1122
+submitted_at: 2026-06-03

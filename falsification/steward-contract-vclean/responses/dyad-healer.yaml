@@ -1,0 +1,16 @@
+responder_dyad_id: dyad-healer
+responder_model: claude-opus-4-8[1m]
+responder_human: pltrinh1122
+divergent_axes: [corpus]          # weight✗ (model+human shared); corpus✓ (rescue ward) — the dissociating control
+grounding: mechanism-grounded
+target_claim_hash: 3d9687a
+responded_at: 2026-06-03
+verdict: NEEDS-SCOPING
+attack_type: scope-challenge
+attack: >
+  Recording axes (§E) is not weighting them — nothing discounts a verdict from a responder sharing ≥2
+  axes, so "N SURVIVEDs = strengthened" counts echo. And rigor is asymmetric: SURVIVED is gated but a
+  single immutable REFUTED is decisive → a melded/generic wrong REFUTED becomes permanent (iatrogenic).
+confound_surfaced: >
+  shared-axis-meld — this verdict shares 2/3 axes (model+human) with the submitter; by its own attack it
+  must not be decisive, which is why it is NEEDS-SCOPING not REFUTED. The verdict enacts its own discount.

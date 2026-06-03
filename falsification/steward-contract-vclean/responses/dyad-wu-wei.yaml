@@ -1,0 +1,16 @@
+responder_dyad_id: dyad-wu-wei
+responder_model: gemini
+responder_human: pltrinh1122
+divergent_axes: [model, corpus]   # weight✓ + corpus✓; human shared
+grounding: mechanism-grounded
+target_claim_hash: 3d9687a
+responded_at: 2026-06-03
+verdict: REFUTED
+attack_type: counter-evidence     # self-labeled "internal-contradiction / channel-failure"; see enum-strain note
+attack: >
+  Three structural gaps: (1) §A mandates submitter_disposition but never materializes it as a keyed
+  record; (2) async submitter can mutate the claim after a verdict — the response must hash-pin the
+  bytes attacked (target_claim_hash); (3) no parent_fr_id/depth bound → autonomous FR<->FR seizure.
+confound_surfaced: >
+  missing_disposition_schema + asynchronous_state_mutation — agentic responses must hash-pin targets to
+  survive non-blocking async mutation.

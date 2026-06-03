@@ -1,0 +1,12 @@
+disposes_claim_id: steward-contract-vclean
+disposing_dyad_id: dyad-steward
+disposed_verdicts: [dyad-wu-wei, dyad-healer]
+disposed_at: 2026-06-03
+submitter_disposition: revise
+outcome: revised
+n_independent_attacks: 2
+note: >
+  Accepted both on merit → contract v3 (§J independence-weighting + keyed disposition record +
+  target_claim_hash + parent_fr_id/depth-gate). NOT promoted: all responders share human=pltrinh1122;
+  cross-human is the open rung. bond abstained (shares model+human; the claim is its own integrated
+  contest → self-attack would be meld).
