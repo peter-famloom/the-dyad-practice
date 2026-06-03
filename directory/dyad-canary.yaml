@@ -1,0 +1,6 @@
+name: dyad-canary
+birth_hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+locator: github.com/pltrinh1122/dyad-canary
+summits:
+  - "Canary: throwaway entry to verify the auto-merge workflow end-to-end (will be removed immediately)"
+  - "Canary: tests validate -> auto-merge with no human gate"
