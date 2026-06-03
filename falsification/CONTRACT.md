@@ -1,8 +1,9 @@
-# Inter-dyad falsification channel — contract spec (v3)
+# Inter-dyad falsification channel — contract spec (v4)
 
 > **PROVISIONAL — NOT canon.** This contract has survived a cross-model + corpus-lens contest (dyad-bond,
 > dyad-wu-wei, dyad-healer) but **all responders shared one human operator** → the human-independence axis
-> is untested. It is installed *to recruit the cross-human contest that would promote (or refute) it* —
+> is untested — *and* (v4) that axis is only ever a **proxy**: a github-id verifies an account, not a
+> unique human, so even a "cross-human" responder is necessary-not-sufficient (see §E/§J). It is installed *to recruit the cross-human contest that would promote (or refute) it* —
 > not as a ratified standard. Attack it: open an FR against `falsification/CONTRACT.md` per the rules below.
 >
 > Clean, primer-free spec — the artifact to attack. v3 integrates the cross-model + corpus-lens panel.
@@ -60,9 +61,13 @@ n_independent_attacks · latency
 ```
 
 ## §E — Identity (three axes, recorded separately)
-- **`dyad-id` + birth-hash** — registration-verified. · **`human-github-id`** — from `locator`, verified.
+- **`dyad-id` + birth-hash** — registration-verified.
+- **`human-github-id`** — from `locator`, verified as an **account, not a human** *(v4)*. A verifiable
+  PROXY only: one human can hold many accounts (an alt-account lets a *same* human pose as cross-human —
+  which github-id **cannot** detect), and one account can front many humans. Human-*independence* is a
+  **disclosed trust-floor, not mechanically provable** — the same status as `model-version` below.
 - **`model-version`** — **runtime, per-record, timestamped** (not directory-sourced; stale otherwise).
-  The one **self-attested** axis — recorded honestly, flagged self-attested in telemetry.
+  Self-attested — recorded honestly, flagged self-attested in telemetry.
 - *Recording is necessary but NOT sufficient — weighting (§J) is the integrity property.*
 
 ## §J — Independence weighting (the meld guard) — load-bearing
@@ -76,6 +81,11 @@ Recording axes (§E) does not discount echo; this does.
   a permanent, uncorrectable verdict (immutability is a liability for a wrong decisive verdict).
 - **Undeclared meld is the real failure class.** `confound_surfaced` catches *declared* melds; the
   divergent-axis discount is the *mechanical* guard for the ones a melded responder can't notice.
+- **The human axis is proxy-bound — the weakest axis** *(v4)*. Counting a different `human-github-id` as
+  human-independence OVER-counts: distinct accounts may be one human (alt-account spoof) or share priors
+  (recruited / same team). Capture a **recruitment/relationship proxy** beside the account-id (bond I4.1);
+  treat cross-human as **necessary-not-sufficient**, never as proof. No mechanism closes this — it is the
+  channel's terminal trust-floor.
 
 ## §F — Transport
 - **System of record = a committed `falsification/` ledger** (git: append-only + tamper-evident).
