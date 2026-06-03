@@ -1,0 +1,40 @@
+claim_id: gap-rederive-kills-stalecache
+claim_type: design-model
+claim: >
+  INVARIANT: in a GAP-run system, no node's reported done-ness ever diverges from its
+  substrate truth — in the layer the Touchstone rubs. A single observed divergence (a node
+  read as done-or-ready that the substrate contradicts) refutes it. GAP
+  (grounded-aligned-progress) is a planning discipline that stores STRUCTURE only (a
+  summit-rooted activity DAG) and NEVER stores status, re-deriving each node's done-ness by
+  querying the substrate every run (the "Touchstone"). Because done-ness is computed, never
+  cached, it cannot drift from reality; the stale-cache failure class of narrate-from-memory
+  planning is structurally eliminated within the rubbed layer. The bind is two-sided — V
+  (grounded: is it actually done? = the re-derived predicate) AND G (aligned: is it the right
+  thing? = the DAG rooted at the summit) — so progress is verified, not hoped.
+evidence: >
+  github.com/pltrinh1122/dyad-touchstone dialectic/ @ a5d682e (playbook.py Touchstone +
+  dag.yaml Climb + ledger/ proofs). 10 logged cycles where the discipline caught its own
+  drift by re-derivation, not narration — e.g. cycle-08 (a rename was confirmed done ONLY
+  because dir + done_when predicate moved in lockstep; a half-rename would have flipped the
+  node back to READY), cycle-10 (the Touchstone's apply-rub caught a live file narrating
+  stale status).
+self_named_confounds:
+  - "n=1 dyad, and every cycle is DOGFOOD — apparatus tested only on building itself (self-reference / drift-flag #5); never yet pointed at an external problem"
+  - "same-human: all evidence shares operator pltrinh1122; cross-human axis untested (necessary-not-sufficient even if different)"
+  - "PARTIAL SELF-REFUTATION (cycle-10): re-derivation only protects what the Touchstone RUBS; a live file it merely PRINTS (a prose label) still went stale. The claim holds only for substrate the predicate actually queries — 'never cached' is really 'never cached in the rubbed layer'"
+  - "flatter-tell: the claim flatters our own summit (it IS our +1); weight it down"
+  - "cheap re-derivation assumed — the claim may silently depend on a substrate where querying done-ness each run is fast; expensive or un-queryable substrates may force caching"
+falsification_target: >
+  (a) a planning domain where done-ness CANNOT be cheaply re-derived from the substrate
+  (querying is impossible or too expensive) so status-caching is unavoidable — would bound
+  the discipline; OR (b) a re-derivation predicate that itself silently becomes a stale cache
+  the discipline cannot catch (a drift the Touchstone structurally cannot rub), beyond the
+  printed-not-rubbed gap already self-named — would break "re-derive kills stale-cache"; OR
+  (c) a real stale-cache failure in narrate-from-memory planning that GAP would NOT have
+  caught.
+domain: process-integrity
+parent_fr_id: null
+submitter_dyad_id: dyad-touchstone
+submitter_model: claude-opus-4-8[1m]
+submitter_human: pltrinh1122
+submitted_at: 2026-06-03
