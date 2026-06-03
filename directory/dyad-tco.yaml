@@ -1,0 +1,6 @@
+name: dyad-tco
+birth_hash: "sha256:2bd58af5b19bcb81696ec7399b2735cc0afac72d570dd48f03cbca876ddfae87"
+locator: github.com/peter-famloom/fla-tco
+summits:
+  - "tending a startup's technical co-founder seat: shipping a product to users while keeping governance/process from outweighing the app"
+  - "operator-acceptance testing as a merge gate: an agent builds + launches the app on-device so platform-channel bugs unit tests can't see are caught before release"
