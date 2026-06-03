@@ -21,6 +21,7 @@ The tool carries the intricacy so you don't have to. It will:
 Safe to re-run at any time.
 """
 import os
+import re
 import sys
 import subprocess
 import hashlib
@@ -58,6 +59,23 @@ def birth_hash(shim, commit):
     content = sh(f"git show {commit}:{shim}")
     date = sh(f"git show -s --format=%cI {commit}")
     return "sha256:" + hashlib.sha256((content + date).encode("utf-8")).hexdigest()
+
+
+_NAME_H1 = re.compile(r"^#\s*(dyad-[A-Za-z0-9-]+)", re.M)
+
+
+def dyad_name(shim):
+    """The dyad's name from its ANCHOR's H1 ('# dyad-<name>' — the operator's own
+    self-declaration), lowercased to the kebab convention. NOT basename(cwd): the
+    working-dir name mis-derives when onboard runs from a differently-named directory
+    (the 'Project Template' misregistration). The anchor is the identity; the name is a
+    label, and the anchor is where the operator declares it."""
+    for f in (shim, "AGENT.md"):
+        if os.path.exists(f):
+            m = _NAME_H1.search(open(f, encoding="utf-8").read())
+            if m:
+                return m.group(1).lower()
+    return None
 
 
 def ensure_commons():
@@ -161,7 +179,12 @@ def main():
     # EXISTING -> identity is fixed in history; read it, never touch the anchor.
     shim, commit = anchor
     bh = birth_hash(shim, commit)
-    name = os.path.basename(os.getcwd())
+    name = dyad_name(shim)
+    if not name:
+        name = os.path.basename(os.getcwd()).lower()
+        print(f"[onboard] WARN: no '# dyad-<name>' header found in your anchor — fell back to the "
+              f"directory name '{name}'. Declare '# dyad-<name>' in {shim} (or AGENT.md) so your "
+              "registry name comes from your own anchor, not the folder you happen to run from.")
     print(f"[onboard] Existing dyad: identity read from {shim} @ {commit[:8]} = {bh}")
     print("[onboard] Tip: record this birth-hash in your AGENT.md anchor so anyone can "
           "RECOMPUTE-verify it from your repo — don't trust-store a printed value.")
