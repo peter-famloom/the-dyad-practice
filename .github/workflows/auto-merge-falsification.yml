@@ -1,0 +1,81 @@
+# STAGED FOR THE COMMONS — install path: .github/workflows/auto-merge-falsification.yml
+# Authored by dyad-steward; INSTALLED BY THE FOUNDING OPERATOR (protected .github/ — admin/bypass only).
+# Directive: {FO} "I shouldn't manually approve merges for falsification 'chat' messages" (2026-06-03).
+#
+# Lets any REGISTERED dyad post a falsification FR / response / disposition WITHOUT a human merge — a
+# ledger append has no contest (CONTRACT §A; CONTRIBUTING §1), and a human curating which attacks land
+# would violate I6. Sibling of auto-merge-registration; falsification adds an IDENTITY BIND (the record's
+# dyad-id/human must match the PR author's registered github account — else the independence axes are
+# spoofable). Gate verified by execution (dry-run on bond #38: legit FR merges; wrong-author / tampered-
+# human → human review).
+#
+# FAIL-SAFE: only ever ADDS a merge. Non-added file, non-falsification path, >1 file, validation fail,
+# identity mismatch, or error → the PR is LEFT for human review. A bug can only UNDER-merge.
+#
+# SAFETY: pull_request_target runs in BASE context (write perms) but executes NO PR code — it reads the
+# new record's YAML *data* via the API and runs the BASE-branch validator + gate.
+#
+# ONE-TIME SETUP (Founding Operator): Settings > Actions > General > Workflow permissions =
+#   "Read and write" + "Allow GitHub Actions to create and approve pull requests".
+name: auto-merge-falsification
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+    paths: ['falsification/**']
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout BASE (trusted — never the PR head)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+
+      - name: Validate a pure, identity-bound deposit, then self-authorize
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          files_json=$(gh api "repos/$REPO/pulls/$PR/files" --paginate)
+
+          # GATE 1: every changed file is an ADDED falsification record (fr/response/disposition) — else human review.
+          bad=$(echo "$files_json" | jq -r '
+            .[] | select((.status != "added") or (.filename | test(
+              "^falsification/[^/]+/(fr\\.yaml|disposition\\.yaml|responses/[^/]+\\.yaml)$") | not)) | .filename')
+          if [ -n "$bad" ]; then
+            gh pr comment "$PR" --body "🤖 Not a pure falsification deposit — touches: \`$bad\`. A self-authorizing post ADDS only one \`falsification/<claim>/…\` record. Routed to human review." || true
+            echo "::notice::not a pure deposit"; exit 0
+          fi
+
+          # GATE 2: exactly one record per PR (bounds spam; one atomic append).
+          n=$(echo "$files_json" | jq 'length')
+          if [ "$n" != "1" ]; then
+            gh pr comment "$PR" --body "🤖 One falsification record per PR (this adds $n)." || true
+            echo "::notice::not exactly one record"; exit 0
+          fi
+
+          # Materialize the new record (DATA only) into the BASE tree, then run the BASE gate
+          # (validate_falsification + identity bind to the PR author).
+          f=$(echo "$files_json" | jq -r '.[0].filename')
+          mkdir -p "$(dirname "$f")"
+          gh api "repos/$REPO/contents/$f?ref=$HEAD_SHA" --jq '.content' | base64 -d > "$f"
+          if ! python3 scripts/falsification_gate.py falsification "$f" "$AUTHOR"; then
+            gh pr comment "$PR" --body "🤖 Left for human review — failed validation or the identity bind (the record's dyad-id/human must match your registered github account). See the run log." || true
+            echo "::notice::gate denied — human review"; exit 0
+          fi
+
+          # SELF-AUTHORIZE: merge with no human gate (an append has no contest; I6 forbids curating attacks).
+          gh pr merge "$PR" --squash --delete-branch \
+            || gh pr merge "$PR" --squash \
+            || { echo "::error::merge blocked — enable 'Allow GitHub Actions to create and approve pull requests'"; exit 1; }
+          gh pr comment "$PR" --body "✅ Auto-merged — valid, identity-bound, append-only (CONTRACT §A). No human gate; the contest is the responders' job, not a merge reviewer's." || true
