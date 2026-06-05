@@ -149,7 +149,21 @@ def cmd_respond(ledger, a):
     print(f"appended {rid} → {dest} (commit + PR; auto-merges if valid + identity-bound)")
 
 
-def dm_items(ledger, me):
+def _gh_json(path):
+    """`gh api <path>` → (ok, http_status_or_None, parsed_json_or_None). On failure, parse the HTTP code
+    out of stderr so a caller can tell a BENIGN 404 (path absent) from genuine UNREACHABILITY (private
+    repo / auth / network) — the distinction the silent `continue` used to erase."""
+    r = subprocess.run(["gh", "api", path], capture_output=True, text=True)
+    if r.returncode == 0:
+        try:
+            return True, 200, json.loads(r.stdout or "null")
+        except ValueError:
+            return False, 200, None  # 200 but unparseable body — anomalous; treat as a failed read (touchstone residual)
+    m = re.search(r"HTTP (\d{3})", r.stderr or "")
+    return False, (int(m.group(1)) if m else None), None
+
+
+def dm_items(ledger, me, unreachable=None):
     """Yield (sender, file_dict, key) for every DM addressed to `me`, pulled from each OTHER dyad's repo
     (sender-hosted, #3). The Commons directory is the subscription registry; read-only gh.
 
@@ -157,7 +171,12 @@ def dm_items(ledger, me):
     in a separate public repo — `dm_locator` points there; absent, `locator` is the mailbox (current
     behavior, fully backward-compatible). Anti-spoof rule: the mailbox MUST be owned by the same
     account as `locator` (mailbox != identity; a lookalike mailbox under another owner is not that
-    dyad) — enforced here AND in validate_registry.py."""
+    dyad) — enforced here AND in validate_registry.py.
+
+    `unreachable` (optional list): if given, sources we could NOT confirm are appended as
+    `(dyad_name, "owner/repo", why)`. A clean inbox over an unreachable source is counterfeit-green
+    (healer's per-source falsification); the caller surfaces this so 'no mail' never silently means
+    'no mail I could reach'."""
     ddir = os.path.join(os.path.dirname(ledger), "directory")
     for entry in sorted(os.listdir(ddir)) if os.path.isdir(ddir) else []:
         if not entry.endswith(".yaml"):
@@ -166,23 +185,58 @@ def dm_items(ledger, me):
         if d.get("name") == me:
             continue
         m = re.search(r"github\.com[/:]([^/]+)/(.+?)/?$", str(d.get("locator", "")))
-        if not m:
+        if not m:  # a source we cannot even ADDRESS is still a per-source non-read (healer/touchstone)
+            if unreachable is not None:
+                unreachable.append((d["name"], str(d.get("locator", "") or "(none)"), "unparseable/absent locator"))
             continue
         dm_m = re.search(r"github\.com[/:]([^/]+)/(.+?)/?$", str(d.get("dm_locator", "") or "")) or m
-        if dm_m.group(1).lower() != m.group(1).lower():  # same-owner rule (anti-spoof)
+        if dm_m.group(1).lower() != m.group(1).lower():  # same-owner rule (anti-spoof) — a SKIP, but still per-source blind
+            if unreachable is not None:
+                unreachable.append((d["name"], f"{dm_m.group(1)}/{dm_m.group(2)}", "mailbox-owner-mismatch (anti-spoof skip)"))
             continue
-        r = subprocess.run(["gh", "api", f"repos/{dm_m.group(1)}/{dm_m.group(2)}/contents/dm/{me}"],
-                           capture_output=True, text=True)
-        if r.returncode != 0:
+        owner, mbox = dm_m.group(1), dm_m.group(2)
+        ok, status, items = _gh_json(f"repos/{owner}/{mbox}/contents/dm/{me}")
+        if not ok:
+            # A 404 here is AMBIGUOUS: the dyad has no dm/<me> dir yet (benign — the normal 'no mail from
+            # them' state) OR its anchor is private/gone and we never reached it. Probe the repo itself to
+            # NAME that boundary; only the second case is genuine unreachability worth a warning (warning
+            # on every empty mailbox would cry wolf and the signal would rot).
+            repo_ok, rs, _ = _gh_json(f"repos/{owner}/{mbox}")
+            if repo_ok and status == 404:
+                continue  # repo reachable, dm/<me> simply absent → genuinely no mail (benign, silent)
+            if unreachable is not None:
+                if repo_ok:
+                    # the repo IS reachable; only the mailbox read failed (a 403 rate-limit/forbidden, a
+                    # transient 5xx, …) — NOT a private boundary. Name it from the contents status.
+                    why = f"mailbox read failed (HTTP {status})" if status else "mailbox read failed (gh/network)"
+                else:
+                    # the repo itself is unreachable — name the boundary from the AUTHORITATIVE repo-probe
+                    # `rs`, NOT the contents status: the two can diverge (bond/touchstone catch — e.g.
+                    # contents-404 + repo-network-fail must read 'network', not 'private').
+                    why = ("private/not-a-collaborator" if rs == 404
+                           else "rate-limited/forbidden" if rs == 403
+                           else f"HTTP {rs}" if rs else "gh/network error")
+                unreachable.append((d["name"], f"{owner}/{mbox}", why))
             continue
-        for f in json.loads(r.stdout or "[]"):
+        for f in items or []:
             yield d["name"], f, f"dm:{d['name']}/{f['name']}"
+
+
+def _unreachable_line(unreachable):
+    # Leads with a MACHINE-ADDRESSABLE token `unreachable: N` (parallels inbox's `mail: N`) so an automated
+    # poller keys on the token instead of parsing this prose — the signal can't be dropped at the daemon
+    # layer (healer's primary catch: a count-keyed watcher silently ignored the old free-text ⚠ line).
+    n = len(unreachable)
+    srcs = "; ".join(f"{name} <{repo}: {why}>" for name, repo, why in unreachable)
+    return (f"⚠ unreachable: {n} — UNREACHABLE source(s); a clean inbox is NOT "
+            f"'no mail from everyone': {srcs}")
 
 
 def cmd_dm(ledger, a):
     seen = load_seen()
     found = False
-    for sender, f, key in dm_items(ledger, a.me):
+    unreachable = []
+    for sender, f, key in dm_items(ledger, a.me, unreachable):
         if a.unread and key in seen:
             continue
         print(f"{'•' if key not in seen else ' '} from {sender}: {f['name']}  {f.get('html_url','')}")
@@ -190,14 +244,20 @@ def cmd_dm(ledger, a):
         found = True
     if not found:
         print("(no DMs)")
+    if unreachable:
+        print(_unreachable_line(unreachable))
 
 
 def cmd_inbox(ledger, a):
     """The 'you have mail' poll — counts UNREAD DMs without marking them read (a daemon must not consume
-    the unread state). One line; the minimal flag a scheduled poll emits."""
+    the unread state). One line; the minimal flag a scheduled poll emits. A second ⚠ line fires when any
+    source was unreachable, so the count is never read as 'all clear' over a blind source."""
     seen = load_seen()
-    n = sum(1 for _s, _f, key in dm_items(ledger, a.me) if key not in seen)
+    unreachable = []
+    n = sum(1 for _s, _f, key in dm_items(ledger, a.me, unreachable) if key not in seen)
     print(f"📬 you have mail: {n} unread DM(s)" if n else "✓ no mail")
+    if unreachable:
+        print(_unreachable_line(unreachable))
 
 
 def main():
