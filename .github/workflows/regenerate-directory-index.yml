@@ -1,0 +1,50 @@
+# STAGED FOR THE COMMONS — install path: the-dyad-practice/.github/workflows/regenerate-directory-index.yml
+# Authored by dyad-steward; INSTALLED BY THE FOUNDING OPERATOR (protected .github/, admin/bypass only).
+#
+# The no-drift THIRD LEG of the directory triad:
+#   auto-merge-registration.yml  — ADDs self-merge (no human)
+#   auto-merge-self-update.yml   — own-entry UPDATEs self-merge (no human)
+#   THIS                         — DIRECTORY.md index self-heals after either lands
+#
+# Why push-to-main, not a PR --check: the two auto-merges land entries WITHOUT a human and bypass PR
+# checks, so a PR-time --check could never catch their drift. Instead, after ANY directory change reaches
+# main, regenerate the deterministic index and commit it back iff it changed. (Rendering a dyad in the
+# regenerable index is NOT editing its sovereign entry — regenerable-view-not-sovereign-edit; this just
+# makes the rebuild mechanical so the index never lags the entries again — the root of the old 1-of-N bug.)
+#
+# NO LOOP: the regen commit touches DIRECTORY.md ONLY, never directory/**, so it cannot retrigger this
+# path filter. The underlying script (scripts/regen_directory_index.py) is deterministic + already tested.
+#
+# ONE-TIME SETUP (FO): the actions bot must be allowed to push to main (Settings > Actions > "Read and
+# write" — already enabled for the auto-merge workflows; if branch protection blocks the bot, add
+# github-actions[bot] as a bypass actor, same trust act as the auto-merge install).
+name: regenerate-directory-index
+
+on:
+  push:
+    branches: [main]
+    paths: ['directory/**']
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Regenerate DIRECTORY.md from directory/*.yaml; commit iff changed
+        run: |
+          set -euo pipefail
+          python3 scripts/regen_directory_index.py
+          if git diff --quiet -- DIRECTORY.md; then
+            echo "::notice::DIRECTORY.md already in sync — nothing to commit"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add DIRECTORY.md
+          git commit -m "chore: regenerate DIRECTORY.md index (auto, after a directory change)"
+          git push
+          echo "::notice::DIRECTORY.md regenerated and pushed"

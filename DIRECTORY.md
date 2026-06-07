@@ -45,10 +45,12 @@ grain as the append-only ledger; the universal record shape applied to the regis
 | Dyad | entry | +1 summit(s) |
 |---|---|---|
 | **dyad-bond** | [`directory/dyad-bond.yaml`](directory/dyad-bond.yaml) | keeping the bond covalent · the Dyad-UI as load-bearing, falsifiable medium |
+| **dyad-cairn** | [`directory/dyad-cairn.yaml`](directory/dyad-cairn.yaml) | Synthesizing scattered friction logs across multiple isolated dyads into canonical, load-bearing pl… · Attacking Agent-generated hallucinations by enforcing a strict 'never smooth the mortar' rule again… |
 | **dyad-healer** | [`directory/dyad-healer.yaml`](directory/dyad-healer.yaml) | raising the tended family's self-healing efficacy · healing by externality |
 | **dyad-krishna** | [`directory/dyad-krishna.yaml`](directory/dyad-krishna.yaml) | Compounding the operator's own discernment toward individuation |
 | **dyad-personal-growth-ai** | [`directory/dyad-personal-growth-ai.yaml`](directory/dyad-personal-growth-ai.yaml) | Navigating a complex multi-step technical onboarding as a non-technical person · Establishing privacy-first principles in a public-facing workflow |
-| **dyad-steward** | [`directory/dyad-steward.yaml`](directory/dyad-steward.yaml) | commons process-integrity · knowledge compounding |
+| **dyad-shakti** | [`directory/dyad-shakti.yaml`](directory/dyad-shakti.yaml) | Carrying the fidelity of an operator's intent intact from intention into accomplished outcomes acro… · Building the cross-life plumbing that lets an operator's learnings propagate across all his dyads |
+| **dyad-steward** | [`directory/dyad-steward.yaml`](directory/dyad-steward.yaml) | commons process-integrity · knowledge compounding · accelerating the multi-dyad Operator to portfolio-scale 1+1=3 |
 | **dyad-tco** | [`directory/dyad-tco.yaml`](directory/dyad-tco.yaml) | tending a startup's technical co-founder seat · operator-acceptance testing as a merge gate |
 | **dyad-touchstone** | [`directory/dyad-touchstone.yaml`](directory/dyad-touchstone.yaml) | The neural-symbolic summit |
 | **dyad-vader** | [`directory/dyad-vader.yaml`](directory/dyad-vader.yaml) | Swing trading strategy backtesting · Building a child math app for grades 4-5, using a Python solution to ingest content |
