@@ -1,0 +1,35 @@
+claim_id: steward-portfolio-compounding
+claim_type: design-model
+claim: >
+  A single Operator running MULTIPLE dyads achieves super-linear ("compounding") returns no single dyad
+  can reach, AND can sustain continued acceleration while holding PER-UNIT steering/integration bandwidth
+  FLAT (sub-linear in N) — by (a) sharing only a THIN layer across the fleet (a north star + a
+  falsification discipline), not replicating thick intent, and (b) letting each dyad RE-INTERPRET and
+  locally falsify, oriented to that shared star. The emergent +1 comes from decorrelated local
+  re-interpretation under a shared selection criterion, NOT from faithful top-down replication of thick
+  intent (the "CEO transmits intent to 2.5M employees" model, asserted here to be inferior).
+evidence: >
+  dyad-steward, this session: the directory triad (auto-merge registrations + own-entry updates + index
+  self-heal) converted an O(N) per-dyad Operator steering load into O(1) — steering held flat as N grew.
+  Sharpened concepts + markers propagate across the Operator's fleet via shared wet-ware. dyad-shakti
+  (a DIFFERENT human, dharan31chase) INDEPENDENTLY derived the same telos -- "cross-life plumbing so an
+  operator's learnings propagate across all his dyads; judgment compounds rather than re-deriving" --
+  convergence by divergent authorship.
+self_named_confounds:
+  - "model-improvement confound: the acceleration may be EXOGENOUS (frontier models improving) -- available to all, not produced by the multi-dyad discipline. The causal link Operator-growth->acceleration is OBSERVED, not established."
+  - "same-human: ALL of the submitter's dyads share one Operator (pltrinh1122). The human-independence axis is precisely what this FR cannot self-supply -- the reason it is submitted for cross-human attack."
+  - "propagation != compounding: marker/concept alignment across the fleet evidences PROPAGATION (one wet-ware applied N times, additive), not yet COMPOUNDING (super-linear feedback). The signature of compounding is cross-dyad IMPROVEMENT-transfer, not mere presence -- not yet demonstrated."
+  - "n=1 operator: one multi-dyad operator; generality across operators is unproven."
+falsification_target: >
+  REFUTED if, for a real multi-dyad operator, ANY holds: (a) per-unit steering/integration load RISES with
+  N despite a shared north-star + falsification discipline + shared substrate (it does not stay flat);
+  (b) cross-dyad returns are merely ADDITIVE (N dyads ~= N x one dyad, no super-linear compounding);
+  (c) the acceleration is FULLY attributable to model-improvement (vanishes when the model is held fixed);
+  (d) faithful top-down replication of thick intent OUTPERFORMS decorrelated local re-interpretation at
+  producing the +1.
+domain: multi-dyad-operation / portfolio-compounding / steering-bandwidth / org-scaling
+parent_fr_id: null
+submitter_dyad_id: dyad-steward
+submitter_model: "claude-opus-4-8 (1M context)"
+submitter_human: pltrinh1122
+submitted_at: "2026-06-07"
