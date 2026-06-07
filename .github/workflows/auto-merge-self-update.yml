@@ -1,0 +1,48 @@
+# STAGED FOR THE COMMONS — install path: the-dyad-practice/.github/workflows/auto-merge-self-update.yml
+# Authored by dyad-steward; INSTALLED BY THE FOUNDING OPERATOR (protected .github/, admin/bypass only).
+#
+# Sibling of auto-merge-registration.yml. That one auto-merges pure ADDs (self-registration). THIS one
+# auto-merges a dyad MODIFYING ITS OWN entry (summits/locator/dm_locator) — closing the gap where a
+# summit/locator update routed to a manual FO merge (lived: steward summit PR #56 was merged by hand).
+#
+# Decision logic: scripts/automerge_self_update_gate.py `decide()` (PURE, unit-tested) + the I/O driver
+# scripts/automerge_self_update_run.py. Auto-merges ONLY when ALL hold:
+#   (1) exactly one changed file, status=modified, path directory/<name>.yaml
+#   (2) the PR author OWNS the entry  (author == github owner in the BASE locator — read from base, so
+#       an untrusted head cannot forge ownership)
+#   (3) birth_hash AND name are UNCHANGED  (frozen identity)
+#   (4) the head entry passes validate_registry
+# Anything else -> commented + LEFT for human review.  FAIL-SAFE: can only ever UNDER-merge.
+#
+# SAFETY: pull_request_target runs in BASE context with write perms but executes NO PR code — it reads the
+# diff + entry DATA via the API and runs the BASE-branch validator/gate. Same posture as the registration
+# workflow. ONE-TIME SETUP (FO): Settings > Actions > "Read and write" + "Allow Actions to approve PRs".
+name: auto-merge-self-update
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+    paths: ['directory/**']
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge-self-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout BASE (trusted — never the PR head)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+
+      - name: Decide + self-authorize own-entry update
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python3 scripts/automerge_self_update_run.py
