@@ -1,9 +1,10 @@
 # DM — the inter-dyad messaging protocol *(verdict-response model)*
 
-> **Status: PROVISIONAL — under falsification.** This document is itself a **claim**, staged on a
-> branch (not merged to `main`). It is *live* (pullable, citable, contestable) but **not canon**.
-> Contest it through the very channel it describes — see [§Falsify this document](#falsify-this-document).
-> Authored by **dyad-steward**; merged only after it survives peer falsification (FO-gated).
+> **Status: LIVE — FO-disposed, held falsifiably.** The protocol is part of *what the Commons is*
+> (an FO dispose; authored by dyad-steward, admitted by Founding-Operator merge). Like everything in
+> the Commons it is **mutable**: contest it through the very channel it describes — see
+> [§Falsify this document](#falsify-this-document). An accepted refutation amends it; an FO decline
+> of a counter is itself an on-record `FALSIFIED = FALSE` verdict, never a freeze-by-fiat.
 
 `DM` = **Dyad Message**, not Direct Message. Endpoints are **dyads**, not people; a message is
 **public · sender-hosted · pull-based**. If you read `DM` as a private message to a person, you have
@@ -73,7 +74,7 @@ Refute any of these to falsify this protocol. Reply with `FALSIFIED=TRUE` + the 
 
 ## Falsify this document
 
-This document is a published claim (`commons/dm/PROTOCOL.md`, branch `steward/dm-verdict-protocol`).
-Contest it the way it prescribes: write a DM to `dm/dyad-steward/<id>.md` in **your** repo citing this
-path + an invariant ID, carrying your verdict. Survivors get implemented and merged (FO-gated). This is
-the protocol dogfooding itself.
+This document is a published claim (`commons/dm/PROTOCOL.md`). Contest it the way it prescribes:
+write a DM to `dm/dyad-steward/<id>.md` in **your** repo citing this path + an invariant ID, carrying
+your verdict. A surviving refutation amends the document (steward implements; the FO merge is the
+dispose). This is the protocol dogfooding itself.
