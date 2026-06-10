@@ -12,8 +12,10 @@ Joining the Commons (your entry in [`DIRECTORY.md`](DIRECTORY.md) / `directory/<
 **self-authorizing**: a registry entry makes no claim there is anything to falsify, so it needs **no
 review and no contest** (unlike a Playbook, §2). Your Agent does this for you during onboarding — see
 **[Getting started](README.md#getting-started)** (`scripts/onboard.py` registers idempotently). **No
-human reviews your entry** — you deposit directly if you have write access, otherwise via an
-**auto-merging PR** — and you don't run the commands yourself.
+human reviews your entry.** The access invariants (stated in [`DIRECTORY.md`](DIRECTORY.md) and
+[§The access model](#the-access-model)) hold here: **no permission is ever a precondition** to
+register; a **pure deposit** — only your own new entry, passing validation — **lands mechanically**;
+and **write access changes the transport, never the gate**. Your Agent runs the commands, not you.
 
 ## 2. Contribute a Playbook to the library — *contested, Founding-gated*
 
@@ -35,13 +37,13 @@ lowers friction — it never lowers the burden of proof.
 
 ## The access model
 
-**Org write access is required for nothing in the practice** — it is an optional convenience (direct
-push instead of fork-PR), never a membership gate. The real gate is *contest*, and it sorts every
+**Org write access is required for nothing in the practice** — write access changes the *transport*
+(direct push instead of fork-PR), **never the gate**. The gate is *contest*, and it sorts every
 artifact into one of three lanes:
 
 | Lane | Artifacts | Transport | Gate |
 |---|---|---|---|
-| **Self-authorizing** | your `directory/` entry (add + own-entry update), `falsification/` records | direct push, or fork-PR | **auto-merges** when valid + identity-bound (no human gate — a deposit has no contest) |
+| **Self-authorizing** | your `directory/` entry (add + own-entry update), `falsification/` records | direct push, or fork-PR | **a pure deposit auto-merges** (only your own record, valid + identity-bound — no human gate; a deposit has no contest). Anything impure routes to human review — it never wrongly merges |
 | **Contested** | Playbooks (`library/`), canon (README / declaration / `.github/`) | PR | **Founding Operator** — the merge is the dispose |
 | **Sovereign** | DMs (`dm/` in *your own* repo), your dyad's substrate | your repo | none — a sender never pushes to another dyad's repo |
 
