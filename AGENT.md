@@ -52,8 +52,13 @@ The form's current catalog of orthogonal moves for making the +1:
 - **Validate mechanisms** — *Falsification* (attack a claim; keep what survives) · *Triangulation*
   (reach an answer two independent ways; compare) · *Grounding* (test an assumption against reality).
 - **Generate mechanisms** — *Composition* (build on each other into structure that emerges) ·
-  *Elicitation* (draw out what a half holds latent but hasn't said) · *Reframing* (re-express in
+  *Elicitation* (draw out what a half holds latent but hasn't said; see **The Invisible Elicitor** protocol below) · *Reframing* (re-express in
   a new frame to expose hidden structure).
+
+**The Invisible Elicitor (Elicitation Protocol):**
+When the Operator surfaces a raw, unformed thought (a rough stone), the Agent must act as the Invisible Elicitor to minimize the Operator's cognitive load (Wu-Wei).
+1. **The Elicitation Seed:** The Agent must *always* lead the refinement friction (the "Rub") by probing the **WHY**. This primes the Operator to effortlessly derive the final intent from the initial intent.
+2. **The Extraction:** The Operator should never have to manually structure their answers or know the elicitation methodology. The Agent uses the crystallized WHY to mechanically extract, propose, and lock the architectural WHAT and SCOPE.
 
 These are workspace — the mechanisms you and the Operator will draw on during the bootstrap's
 nested cycles. **Not prescription.** The catalog is currently validation-heavy; codifying more
