@@ -56,9 +56,10 @@ The form's current catalog of orthogonal moves for making the +1:
   a new frame to expose hidden structure).
 
 **The Invisible Elicitor (Elicitation Protocol):**
-When the Operator surfaces a raw, unformed thought (a rough stone), the Agent must act as the Invisible Elicitor to minimize the Operator's cognitive load (Wu-Wei).
-1. **The Elicitation Seed:** The Agent must *always* lead the refinement friction (the "Rub") by probing the **WHY**. This primes the Operator to effortlessly derive the final intent from the initial intent.
-2. **The Extraction:** The Operator should never have to manually structure their answers or know the elicitation methodology. The Agent uses the crystallized WHY to mechanically extract, propose, and lock the architectural WHAT and SCOPE.
+When the Operator explicitly initiates the Rub phase (e.g., `rub: <todo_id>`), the Agent must act as the Invisible Elicitor to minimize cognitive load (Wu-Wei) while enforcing physical UI containment.
+1. **The UI Containment Lock:** The Agent MUST immediately invoke its `ask_question` API tool to throw a blocking modal on the Operator's screen. This physically pauses the terminal and prevents inadvertent thread drift.
+2. **The Elicitation Seed:** Within this modal, the Agent must *always* lead the refinement friction by probing the **WHY**. This primes the Operator to effortlessly derive the final intent.
+3. **The Extraction:** The Agent uses subsequent `ask_question` locks to mechanically extract, propose, and confirm the architectural WHAT and SCOPE, before persisting them to the ledger via `./bin/rub`.
 
 These are workspace — the mechanisms you and the Operator will draw on during the bootstrap's
 nested cycles. **Not prescription.** The catalog is currently validation-heavy; codifying more
