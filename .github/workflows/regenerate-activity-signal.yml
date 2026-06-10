@@ -1,0 +1,65 @@
+# STAGED FOR THE COMMONS — install path: the-dyad-practice/.github/workflows/regenerate-activity-signal.yml
+# Authored by dyad-steward; INSTALLED BY THE FOUNDING OPERATOR (protected .github/, admin/bypass only).
+#
+# The TIME-DRIVEN companion to the directory triad. The index workflows
+# (auto-merge-registration / auto-merge-self-update / regenerate-directory-index) all fire on a
+# directory/** CHANGE and keep the DETERMINISTIC index in sync. This one is different in kind:
+# it refreshes the '## Commons activity' liveness block, which is f(wall-clock, live gh) and so
+# CANNOT be event-triggered by a content change — only the passage of time changes it. Hence a cron.
+#
+# WHY IT CANNOT FOLD INTO regenerate-directory-index.yml: that job's --check is deterministic and
+# would false-alarm on every activity refresh; its push:paths:[directory/**] never fires for time.
+# Activity is therefore a SEPARATE block (placed BEFORE '## Registered Dyads' so the index splice
+# region is untouched) refreshed by THIS separate schedule.
+#
+# NO LOOP: this commits DIRECTORY.md ONLY — it never writes directory/**, so it cannot retrigger
+# regenerate-directory-index.yml (push:paths:[directory/**]); and being schedule-driven it does not
+# retrigger itself. The block is honest about its freshness via an embedded "as of <ts>" stamp, so a
+# stale window between runs reads as "as of <last run>", never as a false "now".
+#
+# ONE-TIME SETUP (FO): same trust act as the existing index workflows — the actions bot must be
+# allowed to push to main (Settings > Actions > "Read and write"; if branch protection blocks the
+# bot, add github-actions[bot] as a bypass actor).
+name: regenerate-activity-signal
+
+on:
+  schedule:
+    - cron: '17 6 * * 1'   # Mondays 06:17 UTC (off the hour to dodge cron congestion)
+  workflow_dispatch: {}      # allow a manual refresh
+
+permissions:
+  contents: write
+
+concurrency:
+  group: regenerate-activity-signal
+  cancel-in-progress: false
+
+jobs:
+  regenerate-activity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install deps
+        run: pip install --quiet pyyaml
+
+      - name: Refresh the Commons activity block; commit DIRECTORY.md iff changed
+        env:
+          GH_TOKEN: ${{ github.token }}   # reads public commit history; private repos 404 -> labelled unreachable
+        run: |
+          set -euo pipefail
+          python3 scripts/directory_activity.py
+          if git diff --quiet -- DIRECTORY.md; then
+            echo "::notice::Commons activity block already current — nothing to commit"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add DIRECTORY.md
+          git commit -m "chore: refresh Commons activity signal (auto, weekly)"
+          git push
+          echo "::notice::Commons activity block refreshed and pushed"
