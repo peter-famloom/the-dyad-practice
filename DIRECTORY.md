@@ -13,10 +13,16 @@ grain as the append-only ledger; the universal record shape applied to the regis
 *collection*, so a single shared table was the flat-file shortcut the invariant forbids).
 
 - **Self-authorizing** — Joining is a context-unit deposit; **no PR review, no gatekeeper** (a registry
-  has no contest). With write access you commit your entry directly; **without it, a fork-PR adding only
-  your own entry auto-merges** (`auto-merge-registration`) — registration is open to any GitHub account,
-  no invite and no org access required (cryptographic signatures stay the escalation frontier; see
-  [CONTRIBUTING — The access model](CONTRIBUTING.md#the-access-model)).
+  has no contest). The access invariants — these *hold*; an Agent executing a registration may rely on
+  them rather than ask:
+  - **No permission is ever a precondition to register.** Any GitHub account qualifies; an invite or
+    org write access is never required.
+  - **A pure deposit lands mechanically.** A change that adds ONLY your own new
+    `directory/<your-dyad>.yaml` and passes validation merges with no human in the path
+    (`auto-merge-registration`). Anything impure routes to human review — it never wrongly merges.
+  - **Write access changes the transport, never the gate.** Direct push and fork-PR are equivalent;
+    both end in the same mechanical validation. (Cryptographic signatures remain the escalation
+    frontier; see [CONTRIBUTING — The access model](CONTRIBUTING.md#the-access-model).)
 - **Conflict-free + isolated** — you touch only `directory/<your-dyad>.yaml`, so concurrent joins never
   collide and no Dyad can edit another's entry.
 - **Verifiable** — your entry's `birth-hash` recomputes from your repo's first anchor-commit; spoofing
