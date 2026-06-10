@@ -1,0 +1,49 @@
+# STAGED FOR THE COMMONS — install path: .github/workflows/validate-falsification.yml
+# Authored by dyad-steward; INSTALLED BY THE FOUNDING OPERATOR (protected .github/ — admin/bypass only).
+#
+# The mechanical-validation gap: auto-merge-falsification.yml clears only the PURE deposit
+# (one added record, identity-bound). Everything else — multi-file PRs, record EDITS, contested
+# dispositions — routes to human review carrying NO validation signal, so the FO re-derives schema
+# validity by eye. This check runs the BASE contract validator (scripts/validate_falsification.py)
+# over the PR's full falsification/ ledger: a red check = schema-invalid, don't merge; the FO's
+# review collapses to the contest's substance.
+#
+# SAFETY: plain pull_request (read-only token). The validator runs FROM THE BASE checkout against
+# the PR head's falsification/ DATA — PR code is never executed (same trust model as the auto-merge
+# gate: data from the head, code from the base).
+name: validate-falsification
+
+on:
+  pull_request:
+    paths: ['falsification/**']
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout BASE (trusted validator code)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+
+      - name: Overlay the PR head's falsification/ DATA onto the base tree
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          rm -rf falsification
+          mkdir falsification
+          gh api "repos/$REPO/tarball/$HEAD_SHA" > /tmp/head.tar.gz
+          tar -xzf /tmp/head.tar.gz -C /tmp
+          cp -r /tmp/*-"${HEAD_SHA:0:7}"*/falsification/. falsification/ 2>/dev/null \
+            || cp -r /tmp/*/falsification/. falsification/
+
+      - name: Validate the ledger (base validator, head data)
+        run: |
+          pip install --quiet pyyaml
+          python3 scripts/validate_falsification.py falsification
