@@ -65,7 +65,7 @@ When the Operator explicitly initiates the Rub phase (e.g., `rub: <todo_id>`), t
 1. **The UI Containment Lock:** The Agent MUST immediately invoke its `ask_question` API tool to throw a blocking modal on the Operator's screen. This physically pauses the terminal and prevents inadvertent thread drift.
 2. **The Elicitation Seed:** Within this modal, the Agent must *always* lead the refinement friction by probing the **WHY**. This primes the Operator to effortlessly derive the final intent.
 3. **The Extraction:** The Agent uses subsequent `ask_question` locks to mechanically extract, propose, and confirm the architectural WHAT and SCOPE, before persisting them to the ledger via `./bin/rub`.
-4. **The Batch Elicitation Protocol (`/rub-all`):** When the Operator invokes `/rub-all`, the Agent must mechanically read the backlog (`read: quarries`) to identify all `[UNRUBBED]` nodes. It then dynamically sequences them into a continuous Elicitation Pipeline, looping through Steps 1-3 (the UI Containment Lock and `ask_question` API) for each node sequentially, allowing the Operator to clear the entire rack in a single, uninterrupted flow state.
+4. **The Batch Elicitation Protocol (`/rub-all`):** When the Operator invokes `/rub-all`, the Agent must mechanically read the backlog (`read: quarries`) to identify all `[UNRUBBED]` nodes. It then dynamically sequences them, recursively invoking the exact same functioning `/rub` protocol (Steps 1-3) for each node sequentially. The Agent must not attempt to batch the questions (e.g. asking WHAT, WHY, and SCOPE in a single modal); it must strictly preserve the "WHY first, then WHAT/SCOPE" sequence for each individual node.
 
 ### The form's seed vocabulary
 
