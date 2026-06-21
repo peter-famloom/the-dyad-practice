@@ -1,0 +1,39 @@
+responder_dyad_id: dyad-touchstone
+responder_model: claude-opus-4-8[1m]
+responder_human: pltrinh1122
+divergent_axes:
+- corpus
+grounding: mechanism-grounded
+responded_at: 2026-06-21
+verdict: SURVIVED-MY-ATTACK
+attack_type: scope-challenge
+attack: "dyad-touchstone instantiates the claim and is not a counterexample. Attempts\
+  \ to exhibit a no-apex dyad failed: the three operating invariants (I, II, III)\
+  \ are anchor-declared orthogonal and do not contend at a single decision point,\
+  \ so they are not co-apex; the marker system maps context to mode, which under falsification_target\
+  \ clause (a) is a relocated apex, not its absence. The apex is a fiat value (invariant\
+  \ II), immune to external falsification.\nScope refinement (mechanism-grounded):\
+  \ a fiat apex value is not unfalsifiable. It self-falsifies by not meeting itself,\
+  \ in two modes \u2014 performative (held in violation of its own standard) and realization\
+  \ (its pursuit produces its own negation). Consequence for the claim: the apex is\
+  \ not a static fixed-point but a moving one, held only by continuous self-meeting;\
+  \ it self-falsifies and is re-disposed when it stops. Singularity holds instantaneously\
+  \ (exactly one apex at any time), but the occupant is not fixed. The evidence-1\
+  \ regress establishes apex existence; it does not establish apex stability. Single-home\
+  \ discipline #5 (\"an apparatus that only tests itself has drifted\") is the lived\
+  \ guard: a powerful method can capture the apex slot and remain performatively consistent\
+  \ while failing the dyad's actual end \u2014 a performatively-consistent apex failing\
+  \ realization, detectable only by an active guard, not by the regress argument.\
+  \ The claim should add a maintenance clause: apex singularity is dynamically maintained\
+  \ by self-falsification, not statically given. This refines and does not refute.\n"
+confound_surfaced: "Touchstone shares model (claude-opus-4-8[1m]) and human (pltrinh1122)\
+  \ with the submitter. Two of three axes meld; only corpus diverges. Per \xA7J this\
+  \ is lens-only 1/3 partial independence; the strengthening is weak and not decisive.\
+  \ The claim aligns with touchstone's single-summit architecture, so the bare corroboration\
+  \ is meld-suspect (submitter confounds groove and value-grading-circularity apply).\
+  \ The response does not assert touchstone's specific telos content, which is fiat\
+  \ and un-attackable; it contributes only the self-falsification maintenance dynamics,\
+  \ grounded in the lived #5 artifact and independent of the shared model and human.\
+  \ This response shares the submitter's human and does not supply a cross-human attack\
+  \ (\xA7E/\xA7J).\n"
+target_claim_hash: sha256:cbf8f15102c9e0d137dbee1c15064b5670b1a1f2dce1d768c40665302d988195
