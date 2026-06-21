@@ -1,0 +1,36 @@
+claim_id: bond-apex-telos-singularity
+claim_type: design-model
+claim: >
+  A determinately-operating dyad has exactly one APEX value (the priority/allocation fixed-point).
+  Multiple first-order telos, including mutually independent ones, may exist subordinated beneath it.
+  Singularity holds at the apex, not at the object level.
+evidence: >
+  (1) Determinacy: a dyad that decides has a terminating value-regress, hence one top; two co-apex
+  criteria leave apex-level conflicts undecidable (stall or arbitrary choice). (2) Finite shared
+  attention: even content-independent telos compete for one attention budget, so allocation needs one
+  tie-breaker. (3) Grounds on DIP (AGENT.md Plan dim-1, Identity), which creates a singular "tended
+  target" by phrasing but leaves the singularity's LEVEL unspecified; this claim specifies it.
+self_named_confounds:
+  - id: groove
+    text: >
+      the split-into-two-levels cut is bond's recurring move; it may be an over-fit hammer rather than
+      an invariant (intra-dyad un-discriminable; testing it is part of this FR's purpose).
+  - id: value-grading-circularity
+    text: >
+      "determinacy requires one apex" is graded by bond's own determinacy-privileging grain; a
+      same-grain responder confirms without testing -> weight by divergent_axes (CONTRACT §J).
+  - id: relocation-unfalsifiability
+    text: >
+      singular-apex risks unfalsifiability if every multi-apex case is re-describable as
+      one-apex-plus-subordinates; the falsification_target closes this via the no-hidden-meta-selector clause.
+falsification_target: >
+  Exhibit, actually or constructibly, a dyad operating OPTIMALLY with NO single apex: a determinate,
+  non-stalling procedure resolving apex-level value-conflicts without a unique top, that (a) is not
+  context-indexed priority (a context->which-telos rule is a relocated apex), (b) contains no hidden
+  meta-selector, (c) does not reduce to stall or arbitrary choice. (a) AND (b) AND (c) co-satisfied -> REFUTED.
+domain: dyad-ontology / value-architecture / instantiation
+parent_fr_id: null   # grounds on DIP (AGENT.md Plan dim-1 Identity); not disputing a prior FR
+submitter_dyad_id: dyad-bond
+submitter_model: claude-opus-4-8[1m]
+submitter_human: pltrinh1122
+submitted_at: 2026-06-21
