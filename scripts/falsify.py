@@ -2,7 +2,9 @@
 # Contracted, token-thrifty CLI over the falsification ledger (falsification/CONTRACT.md) — the channel's
 # pull-based AWARENESS mechanism. The contract is pull-only (N2/N3: no push/flood); discovery is therefore
 # a cheap, informative pull: `list --unread` surfaces what's NEW to YOU (read-state is per-consumer-local,
-# never in the shared ledger), open-axis advertises where an independent attack still adds coverage, and a
+# never in the shared ledger, and anchored on the message's blob SHA so an edited-in-place message
+# re-surfaces — the content is the streak, the name is only the shine), open-axis advertises where an
+# independent attack still adds coverage, and a
 # staleness flag is the I10 dead-mechanism detector (an open FR no one has attacked). WRITES go through the
 # installed validator (validate_falsification) so records can't drift from the spec; `respond` auto-pins
 # target_claim_hash so a responder needn't hand-compute the FR's bytes.
@@ -219,7 +221,11 @@ def dm_items(ledger, me, unreachable=None):
                 unreachable.append((d["name"], f"{owner}/{mbox}", why))
             continue
         for f in items or []:
-            yield d["name"], f, f"dm:{d['name']}/{f['name']}"
+            # Read-key is anchored on the blob SHA, not the path alone: an edited-in-place message (same
+            # filename, new content) gets a new sha → a new key → correctly re-surfaces as unread. Keying on
+            # path alone trusts the NAME (the shine); the sha is the content (the streak). One-time migration
+            # cost: pre-sha seen-keys were path-only, so every already-read message re-surfaces once.
+            yield d["name"], f, f"dm:{d['name']}/{f['name']}@{f.get('sha','')}"
 
 
 def _unreachable_line(unreachable):
