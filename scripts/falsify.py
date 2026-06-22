@@ -241,15 +241,24 @@ def _unreachable_line(unreachable):
 def cmd_dm(ledger, a):
     seen = load_seen()
     found = False
+    consumed = 0  # DMs this run flips read — `dm` is the only sender-view and it consumes on display (mark_seen
+    # below). Count the fresh ones and SAY SO when >0: a silent consume is the same trust-the-silence risk-class
+    # the blob-sha fix closed for read-state — here DISCLOSED, not prevented. Truth-in-labeling of PRESENT behavior
+    # (a post-loop receipt of a done consume, not same-run steering) — not a --peek (an absent feature, REPORTED
+    # in #69 but judged announce-sufficient); inbox gives the non-consuming COUNT, just not a non-consuming sender list.
     unreachable = []
     for sender, f, key in dm_items(ledger, a.me, unreachable):
         if a.unread and key in seen:
             continue
-        print(f"{'•' if key not in seen else ' '} from {sender}: {f['name']}  {f.get('html_url','')}")
+        fresh = key not in seen
+        print(f"{'•' if fresh else ' '} from {sender}: {f['name']}  {f.get('html_url','')}")
         mark_seen(key)
+        consumed += fresh
         found = True
     if not found:
         print("(no DMs)")
+    if consumed:  # leads with a machine-addressable `seen: N` token (cf. the leading `unreachable: N`; inbox's `mail:` sits mid-line). Prefix pinned by test_falsify_dm_announce.
+        print(f"seen: {consumed} — listing marked {consumed} DM(s) read; `inbox` counts without consuming")
     if unreachable:
         print(_unreachable_line(unreachable))
 
