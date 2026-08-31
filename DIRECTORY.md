@@ -54,7 +54,7 @@ grain as the append-only ledger; the universal record shape applied to the regis
 
 ## Commons activity *(liveness signal — regenerated weekly by `scripts/directory_activity.py`)*
 
-*Public commits per dyad, trailing 7d as of 2026-08-24T07:28:57+00:00. A recruitment/liveness signal — “is anyone home?” — **not** a productivity metric. A private or unreachable repo is labelled, **never** counted as 0.*
+*Public commits per dyad, trailing 7d as of 2026-08-31T13:53:10+00:00. A recruitment/liveness signal — “is anyone home?” — **not** a productivity metric. A private or unreachable repo is labelled, **never** counted as 0.*
 
 | Dyad | commits |
 |---|---|
